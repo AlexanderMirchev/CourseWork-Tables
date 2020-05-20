@@ -8,23 +8,24 @@
 class Table
 {
 private:
-    std::vector<std::vector<Cell *>> table;
+    std::vector<std::vector<std::shared_ptr<Cell>>> table;
+    std::vector<size_t> columnWidths;
 
 public:
     Table(/* args */);
     ~Table();
 
-    std::vector<Cell *> &operator[](const size_t &row)
+    std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row)
     {
         while (row > table.size() - 1)
         {
-            table.push_back(std::vector<Cell *>());
+            table.push_back(std::vector<std::shared_ptr<Cell>>());
         }
 
         return table[row];
     }
 
-    const std::vector<Cell *> &operator[](const size_t &row) const
+    const std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row) const
     {
         assert(row < table.size());
         return table[row];

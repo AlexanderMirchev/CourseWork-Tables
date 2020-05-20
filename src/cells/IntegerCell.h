@@ -7,9 +7,12 @@ class IntegerCell: public Cell
 {
 private:
     int value;
+    
 public:
-    void print(const int cellWidth) const override;
+    IntegerCell(const std::string&);
+    ~IntegerCell();
 
-    double getDoubleValue() override;
+    void print() const override;
+    double getDoubleValue() const override;
 };
 #endif
