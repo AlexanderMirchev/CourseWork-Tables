@@ -2,7 +2,7 @@
 #include <iostream>
 
 IntegerCell::IntegerCell(const std::string &str)
-    : Cell(str), value{std::stoi(str)} {}
+    : Cell(str), value{std::stoi(str)} {std::cout << "integer cell made"<<std::endl;}
 
 void IntegerCell::print() const
 {

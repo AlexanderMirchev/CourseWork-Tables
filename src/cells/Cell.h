@@ -14,10 +14,12 @@ private:
 public:
     Cell(const std::string &);
 
+    const std::string& getBaseValue() const;
+
     void addDependantCell(const std::shared_ptr<Cell> &);
     void removeDependantCell(const std::shared_ptr<Cell> &);
 
-    virtual void print() const = 0;
+    virtual void print() const;
     virtual double getDoubleValue() const = 0;
 };
 #endif

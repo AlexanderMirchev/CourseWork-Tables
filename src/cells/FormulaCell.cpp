@@ -1,9 +1,11 @@
 #include "FormulaCell.h"
+#include <iostream>
 
 FormulaCell::FormulaCell(const std::string &str,
                          std::vector<std::shared_ptr<Cell>> &&contents,
                          std::vector<char> &&operations)
-    : Cell(str), cellContents{contents}, operations{operations} {}
+    : Cell(str), cellContents{contents}, operations{operations} {std::cout << "formula cell made"<<std::endl;}
 
-void FormulaCell::print() const {}
-double FormulaCell::getDoubleValue() const {}
+double FormulaCell::getDoubleValue() const {
+    return 0;
+}

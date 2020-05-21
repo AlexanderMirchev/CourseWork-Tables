@@ -7,13 +7,13 @@ class StringCell : public Cell
 {
 private:
     std::string value;
-    double value;
+    double formulaValue;
 
 public:
     StringCell(const std::string &);
-    ~StringCell();
+    ~StringCell() = default;
 
-    void print() const override;
+    // void print() const override;
     double getDoubleValue() const override;
 };
 #endif

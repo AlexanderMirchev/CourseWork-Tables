@@ -9,6 +9,9 @@
 
 std::shared_ptr<Cell> CellFactory::make(const std::string &str, const Table &table)
 {
+    if(str.empty()) {
+        return std::shared_ptr<Cell>(nullptr);
+    }
     if (validation::isValidFormula(str))
     {
         return createFormula(str, table);
@@ -25,8 +28,9 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &str, const Table &tab
         return std::shared_ptr<Cell>(new IntegerCell(str));
     }
     if(validation::isValidDouble(str)) {
-        return std::shared_ptr<Cell>(new IntegerCell(str));
+        return std::shared_ptr<Cell>(new DoubleCell(str));
     }
+    throw 20;
 }
 
 std::shared_ptr<Cell> CellFactory::createFormula(

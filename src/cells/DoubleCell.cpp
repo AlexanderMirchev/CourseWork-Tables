@@ -2,7 +2,7 @@
 #include <iostream>
 
 DoubleCell::DoubleCell(const std::string &string)
-    : Cell(string), value{std::stod(string)} {}
+    : Cell(string), value{std::stod(string)} {std::cout << "double cell made"<<std::endl;}
 
 void DoubleCell::print() const
 {

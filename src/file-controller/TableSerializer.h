@@ -1,0 +1,20 @@
+#ifndef TABLESERIALIZER_H
+#define TABLESERIALIZER_H
+
+#include <string>
+
+#include "../table/Table.h"
+
+class TableSerializer
+{
+private:
+    std::string filename;
+
+public:
+    TableSerializer(const std::string &filename);
+
+    void deserializeTable(Table &) const;
+
+    void serializeTable(const Table &) const;
+};
+#endif

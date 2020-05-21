@@ -14,7 +14,7 @@ public:
     FormulaCell(const std::string &,
                 std::vector<std::shared_ptr<Cell>> &&, std::vector<char> &&);
 
-    void print() const override;
+    // void print() const override;
     double getDoubleValue() const override;
 };
 #endif

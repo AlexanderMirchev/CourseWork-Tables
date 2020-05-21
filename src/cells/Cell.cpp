@@ -1,7 +1,13 @@
 #include "Cell.h"
+#include <iostream>
 
 Cell::Cell(const std::string &str) : baseValue{str}
 {
+}
+
+const std::string &Cell::getBaseValue() const
+{
+    return this->baseValue;
 }
 
 void Cell::addDependantCell(const std::shared_ptr<Cell> &cell)
@@ -17,4 +23,7 @@ void Cell::removeDependantCell(const std::shared_ptr<Cell> &cell)
             dependantCells.erase(dependantCells.begin() + i);
         }
     }
+}
+void Cell::print() const {
+    std::cout << baseValue;
 }

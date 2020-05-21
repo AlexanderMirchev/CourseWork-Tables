@@ -1,11 +1,9 @@
 #include "StringCell.h"
 #include <iostream>
 
-StringCell::StringCell(const std::string &str) : Cell(str) {}
+StringCell::StringCell(const std::string &str) : Cell(str) {std::cout << "string cell made"<<std::endl;}
 
-void StringCell::print() const {
-    std::cout << value;
-}
 double StringCell::getDoubleValue() const
 {
+    return 0;
 }

@@ -2,8 +2,9 @@
 #define TABLE_H
 
 #include <cassert>
+#include <memory>
 #include <vector>
-#include "Cell.h"
+#include "../cells/Cell.h"
 
 class Table
 {
@@ -12,23 +13,17 @@ private:
     std::vector<size_t> columnWidths;
 
 public:
-    Table(/* args */);
-    ~Table();
+    Table() = default;
+    ~Table() = default;
 
-    std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row)
-    {
-        while (row > table.size() - 1)
-        {
-            table.push_back(std::vector<std::shared_ptr<Cell>>());
-        }
+    size_t numberOfRows() const;
 
-        return table[row];
-    }
+    void considerWidth(const size_t &, const unsigned int &col);
 
-    const std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row) const
-    {
-        assert(row < table.size());
-        return table[row];
-    }
+    std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row);
+
+    const std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row) const;
+
+    void print() const;
 };
 #endif

@@ -10,7 +10,7 @@ private:
     
 public:
     IntegerCell(const std::string&);
-    ~IntegerCell();
+    ~IntegerCell() = default;
 
     void print() const override;
     double getDoubleValue() const override;
