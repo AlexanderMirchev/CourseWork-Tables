@@ -2,12 +2,13 @@
 #include <iostream>
 
 IntegerCell::IntegerCell(const std::string &str)
-    : Cell(str), value{std::stoi(str)} {std::cout << "integer cell made"<<std::endl;}
+    : Cell(str), value{std::stoi(str)} {}
 
 void IntegerCell::print() const
 {
     std::cout << value;
 }
-double IntegerCell::getDoubleValue() const {
+double IntegerCell::getDoubleValue() const
+{
     return value;
 }

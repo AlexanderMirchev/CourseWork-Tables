@@ -5,11 +5,12 @@
 #include <memory>
 #include <vector>
 #include "../cells/Cell.h"
+#include "Row.h"
 
 class Table
 {
 private:
-    std::vector<std::vector<std::shared_ptr<Cell>>> table;
+    std::vector<Row> table;
     std::vector<size_t> columnWidths;
 
 public:
@@ -20,9 +21,9 @@ public:
 
     void considerWidth(const size_t &, const unsigned int &col);
 
-    std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row);
+    Row &operator[](const size_t &row);
 
-    const std::vector<std::shared_ptr<Cell>> &operator[](const size_t &row) const;
+    const Row operator[](const size_t &row) const;
 
     void print() const;
 };

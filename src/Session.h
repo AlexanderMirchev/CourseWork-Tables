@@ -8,13 +8,15 @@
 class Session
 {
 private:
-    std::unique_ptr<FileController> fileController;
-    std::unique_ptr<TableController> tableController;
+    FileController fileController;
+    TableController tableController;
 
 public:
     Session() = default;
     ~Session() = default;
 
     void start();
+private:
+    static const std::string HELP_MESSAGE;
 };
 #endif

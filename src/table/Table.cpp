@@ -17,19 +17,21 @@ size_t Table::numberOfRows() const
     return table.size();
 }
 
-std::vector<std::shared_ptr<Cell>> &Table::operator[](const size_t &row)
+Row &Table::operator[](const size_t &row)
 {
     while (row >= table.size())
     {
-        table.push_back(std::vector<std::shared_ptr<Cell>>());
+        table.push_back(Row());
     }
 
     return table[row];
 }
 
-const std::vector<std::shared_ptr<Cell>> &Table::operator[](const size_t &row) const
+const Row Table::operator[](const size_t &row) const
 {
-    assert(row < table.size());
+    if(row >= table.size()) {
+        return Row();
+    }
     return table[row];
 }
 void Table::print() const

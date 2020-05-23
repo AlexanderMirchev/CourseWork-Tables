@@ -1,6 +1,14 @@
 #include "TableController.h"
 #include "../cells/CellFactory.h"
 
+const Table &TableController::getTable() const
+{
+    if (!this->table.has_value())
+    {
+    }
+    return this->table.value();
+}
+
 void TableController::setTable(const Table &table)
 {
     if (this->table.has_value())
@@ -31,4 +39,5 @@ void TableController::editCell(const size_t &row, const size_t &col,
     {
     }
     this->table.value()[row][col] = CellFactory::make(newValue, this->table.value());
+    table.value().considerWidth(newValue.size(), col);
 }

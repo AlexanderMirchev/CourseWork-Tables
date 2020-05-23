@@ -14,6 +14,7 @@ public:
     TableController() = default;
     ~TableController() = default;
 
+    const Table& getTable() const;
     void setTable(const Table &);
     void removeTable();
 

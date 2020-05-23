@@ -19,9 +19,9 @@ void TableSerializer::deserializeTable(Table &table) const
             unsigned int symbolIterator = 0;
             int wordNumber = 0;
             std::string word;
-            while (symbolIterator < line.size())
+            while (symbolIterator <= line.size())
             {
-                if (line[symbolIterator] == ',')
+                if (line[symbolIterator] == ',' || symbolIterator == line.size())
                 {
                     table[rowIndex].push_back(CellFactory::make(word, table));
                     table.considerWidth(word.size(), wordNumber++);
@@ -33,7 +33,6 @@ void TableSerializer::deserializeTable(Table &table) const
                 }
                 symbolIterator++;
             }
-            table[rowIndex].push_back(CellFactory::make(word, table));
             rowIndex++;
         }
     }

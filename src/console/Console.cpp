@@ -1,18 +1,21 @@
 #include "Console.h"
 #include <iostream>
 
-void Console::start()
+Console::Command Console::readCommand()
 {
-    bool shouldBeRunning = true;
-    while (shouldBeRunning)
-    {
-        std::string command;
-        std::getline(std::cin, command);
+    std::string command;
+    std::getline(std::cin, command);
 
-        unsigned int firstSpaceIndex = command.find(' ');
-        if (firstSpaceIndex == std::string::npos)
-        {
-            if(command == "exit") return;
-        }
+    const size_t firstSpaceIndex = command.find(' ');
+    if (firstSpaceIndex == std::string::npos ||
+        firstSpaceIndex == command.size() - 1 ||
+        firstSpaceIndex == 0)
+    {
+        return Command(command, std::nullopt);
+    }
+    else
+    {
+        return Command(command.substr(0, firstSpaceIndex),
+                       command.substr(firstSpaceIndex + 1));
     }
 }

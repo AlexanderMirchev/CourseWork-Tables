@@ -5,11 +5,14 @@
 #include "DoubleCell.h"
 #include "IntegerCell.h"
 #include "FormulaCell.h"
+#include "ReferenceCell.h"
 #include "StringCell.h"
+#include <iostream>
 
 std::shared_ptr<Cell> CellFactory::make(const std::string &str, const Table &table)
 {
-    if(str.empty()) {
+    if (str.empty())
+    {
         return std::shared_ptr<Cell>(nullptr);
     }
     if (validation::isValidFormula(str))
@@ -22,12 +25,14 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &str, const Table &tab
     }
     if (validation::isValidReference(str))
     {
-        return createReference(str, table);
+        return std::shared_ptr<Cell>(new ReferenceCell(str));
     }
-    if(validation::isValidInteger(str)) {
+    if (validation::isValidInteger(str))
+    {
         return std::shared_ptr<Cell>(new IntegerCell(str));
     }
-    if(validation::isValidDouble(str)) {
+    if (validation::isValidDouble(str))
+    {
         return std::shared_ptr<Cell>(new DoubleCell(str));
     }
     throw 20;
@@ -64,8 +69,9 @@ std::shared_ptr<Cell> CellFactory::createReference(
     const std::string &str, const Table &table)
 {
     size_t posOfC = str.find('C');
-    int rowNum = std::stoi(str.substr(1, posOfC - 1));
+    int rowNum = std::stoi(str.substr(1, posOfC));
     int colNum = std::stoi(str.substr(posOfC + 1));
+    // std::cout << rowNum << "," << colNum << std::endl;
 
-    return table[rowNum][colNum];
+    return table[rowNum - 1][colNum - 1];
 }

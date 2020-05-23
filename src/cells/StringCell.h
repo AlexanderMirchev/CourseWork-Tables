@@ -13,7 +13,7 @@ public:
     StringCell(const std::string &);
     ~StringCell() = default;
 
-    // void print() const override;
+    void print() const override;
     double getDoubleValue() const override;
 };
 #endif
