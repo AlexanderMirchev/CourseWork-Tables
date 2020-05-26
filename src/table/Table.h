@@ -7,6 +7,9 @@
 #include "../cells/Cell.h"
 #include "Row.h"
 
+/*
+    Class for table
+*/
 class Row;
 class Table
 {
@@ -18,16 +21,38 @@ public:
     Table() = default;
     ~Table() = default;
 
+    /*
+        Returns number of rows
+    */
     size_t numberOfRows() const;
 
+    /*
+        Sets a bigger field width for column if size is 
+        bigger than current max for column
+    */
     void considerWidth(const size_t &, const unsigned int &col);
 
+    /*
+        Returns modifiable reference to row and adds
+        empty rows if out of range  
+    */
     Row &operator[](const size_t &row);
 
+    /*
+        Returns row with index row
+        Returns empty row if out of range
+    */
     const Row operator[](const size_t &row) const;
 
+    /*
+        Prints all cell values
+    */
     void print() const;
 
+    /*
+        Calculates all cells that are not calculated yet
+        (when everything is initialized)
+    */
     void makeAllCalculations();
 };
 #endif

@@ -13,6 +13,7 @@ void Cell::addDependantCell(const std::shared_ptr<Cell> &cell)
 {
     this->dependantCells.push_back(cell);
 }
+
 void Cell::removeDependantCell(const std::shared_ptr<Cell> &cell)
 {
     for (size_t i = 0; i < dependantCells.size(); i++)
@@ -23,6 +24,7 @@ void Cell::removeDependantCell(const std::shared_ptr<Cell> &cell)
         }
     }
 }
+
 void Cell::print() const
 {
     if (this->value == nullptr)
@@ -31,9 +33,17 @@ void Cell::print() const
     }
     else
     {
-        this->value->print();
+        try
+        {
+            this->value->print();
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "ERROR";
+        }
     }
 }
+
 double Cell::getDoubleValue() const
 {
     if (this->value == nullptr)
@@ -42,7 +52,8 @@ double Cell::getDoubleValue() const
     }
     return this->value->getDoubleValue();
 }
-void Cell::readyCell(Table &table)
+
+void Cell::updateCell(Table &table)
 {
     if (this->value != nullptr)
     {
@@ -52,10 +63,12 @@ void Cell::readyCell(Table &table)
     }
     for (std::shared_ptr<Cell> cell : dependantCells)
     {
-        cell->readyCell(table);
+        cell->updateCell(table);
     }
 }
-void Cell::setValue(const std::shared_ptr<CellValue> &newValue)
+
+void Cell::setValue(const std::string &str, const std::shared_ptr<CellValue> &newValue)
 {
+    this->baseValue = str;
     this->value = newValue;
 }

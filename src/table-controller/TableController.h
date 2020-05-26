@@ -3,22 +3,28 @@
 #include "../table/Table.h"
 #include <optional>
 
-using namespace std;
-
+/*
+    Controller class for interractions with table
+*/
 class TableController
 {
 private:
-    optional<Table> table;
+    std::optional<Table> table;
 
 public:
     TableController() = default;
     ~TableController() = default;
 
-    const Table& getTable() const;
+    const Table &getTable() const;
     void setTable(const Table &);
     void removeTable();
 
     void printTable() const;
+
+    /*
+        Sets cell at coordinates to newValue and 
+        updates it and all dependant cells
+    */
     void editCell(const size_t &row, const size_t &col,
                   const std::string &newValue);
 };

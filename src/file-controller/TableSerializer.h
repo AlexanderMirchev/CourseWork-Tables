@@ -5,6 +5,9 @@
 
 #include "../table/Table.h"
 
+/*
+    Class for serialization/deserialization
+*/
 class TableSerializer
 {
 private:

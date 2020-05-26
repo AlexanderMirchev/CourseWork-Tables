@@ -44,10 +44,9 @@ void TableController::editCell(const size_t &row, const size_t &col,
     }
     else
     {
-        this->table.value()[row][col]->setValue(CellFactory::makeValue(newValue));
+        this->table.value()[row][col]->setValue(newValue, CellFactory::makeValue(newValue));
     }
-    
 
     table.value().considerWidth(newValue.size(), col);
-    this->table.value()[row][col]->readyCell(this->table.value());
+    this->table.value()[row][col]->updateCell(this->table.value());
 }

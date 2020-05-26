@@ -5,6 +5,9 @@
 #include "table-controller/TableController.h"
 #include "console/Console.h"
 
+/*
+    Class that connects controllers and console
+*/
 class Session
 {
 private:
@@ -15,6 +18,9 @@ public:
     Session() = default;
     ~Session() = default;
 
+    /*
+        Start reading user input and executing commands if available
+    */
     void start();
 private:
     static const std::string HELP_MESSAGE;

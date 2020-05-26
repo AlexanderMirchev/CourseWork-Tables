@@ -67,7 +67,7 @@ void Table::makeAllCalculations()
         {
             if (row[i] != nullptr)
             {
-                row[i]->readyCell(*this);
+                row[i]->updateCell(*this);
             }
         }
     }
