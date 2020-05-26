@@ -23,7 +23,14 @@ void ReferenceValue::calculateValue(const Table &table)
         }
         else
         {
-            this->value = table[this->row][this->col]->getDoubleValue();
+            try
+            {
+                this->value = table[this->row][this->col]->getDoubleValue();
+            }
+            catch(const std::exception& e)
+            {
+                this->value = std::nullopt;
+            }
         }
     }
 }
@@ -40,8 +47,15 @@ void ReferenceValue::setDependantCell(
 
 void ReferenceValue::print() const
 {
-    std::cout << value.value();
+    if(this->value.has_value()) {
+        std::cout << value.value();
+    }
+    else
+    {
+        std::cout << "ERROR";
+    }
 }
+
 void ReferenceValue::nullify()
 {
     this->value = std::nullopt;

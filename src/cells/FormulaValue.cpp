@@ -13,32 +13,47 @@ void FormulaValue::calculateValue(const Table &table)
     this->secondPart->calculateValue(table);
     if (!this->value.has_value())
     {
-        this->value = this->firstPart->getDoubleValue();
-        if (this->operation == '+')
+        try
         {
-            this->value.value() += this->secondPart->getDoubleValue();
+            this->value = this->firstPart->getDoubleValue();
+            if (this->operation == '+')
+            {
+                this->value.value() += this->secondPart->getDoubleValue();
+            }
+            else if (this->operation == '-')
+            {
+                this->value.value() -= this->secondPart->getDoubleValue();
+            }
+            else if (this->operation == '*')
+            {
+                this->value.value() *= this->secondPart->getDoubleValue();
+            }
+            else if (this->operation == '/')
+            {
+                this->value.value() /= this->secondPart->getDoubleValue();
+            }
+            else
+            {
+                value = pow(this->value.value(), this->secondPart->getDoubleValue());
+            }
+            /* code */
         }
-        else if (this->operation == '-')
+        catch (const std::exception &e)
         {
-            this->value.value() -= this->secondPart->getDoubleValue();
-        }
-        else if (this->operation == '*')
-        {
-            this->value.value() *= this->secondPart->getDoubleValue();
-        }
-        else if (this->operation == '/')
-        {
-            this->value.value() /= this->secondPart->getDoubleValue();
-        }
-        else
-        {
-            value = pow(this->value.value(), this->secondPart->getDoubleValue());
+            this->value = std::nullopt;
         }
     }
 }
 void FormulaValue::print() const
 {
-    std::cout << this->value.value();
+    if (this->value.has_value())
+    {
+        std::cout << value.value();
+    }
+    else
+    {
+        std::cout << "ERROR";
+    }
 }
 void FormulaValue::setDependantCell(const std::shared_ptr<Cell> &cell, Table &table) const
 {
