@@ -1,5 +1,4 @@
 #include "Validation.h"
-#
 using namespace validation;
 
 bool validation::isValidInteger(const std::string &str)

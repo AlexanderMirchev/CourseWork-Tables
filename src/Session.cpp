@@ -1,6 +1,6 @@
 #include "Session.h"
 #include <iostream>
-#include "cells/Validation.h"
+#include "utilities/Validation.h"
 #include "cells/ReferenceCell.h"
 
 void Session::start()

@@ -1,6 +1,6 @@
 #include "StringCell.h"
 #include <iostream>
-#include "Validation.h"
+#include "../utilities/Validation.h"
 
 StringCell::StringCell(const std::string &str) : Cell(str)
 {
