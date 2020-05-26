@@ -2,6 +2,7 @@
 #define FORMULACELL_H
 
 #include "Cell.h"
+#include <optional>
 
 class FormulaCell : public Cell
 {
@@ -10,7 +11,7 @@ private:
     // std::vector<std::shared_ptr<Cell>> cellContents;
     // std::vector<char> operations;
 
-    double value;
+    std::optional<double> value;
     std::shared_ptr<Cell> firstPart;
     std::shared_ptr<Cell> secondPart;
     char operation;
@@ -23,5 +24,6 @@ public:
 
     // void print() const override;
     double getDoubleValue() const override;
+    void calculateValue(const Table&) override;
 };
 #endif

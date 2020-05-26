@@ -5,6 +5,7 @@
 #include <memory>
 #include "../cells/Cell.h"
 
+class Cell;
 class Row
 {
 private:

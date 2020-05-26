@@ -5,18 +5,6 @@
 StringCell::StringCell(const std::string &str) : Cell(str)
 {
     this->value = str.substr(1, str.size() - 2);
-    if (validation::isValidInteger(value))
-    {
-        this->formulaValue = std::stoi(value);
-    }
-    else if (validation::isValidDouble(value))
-    {
-        this->formulaValue = std::stod(value);
-    }
-    else
-    {
-        this->formulaValue = 0;
-    }
 }
 
 void StringCell::print() const
@@ -26,5 +14,23 @@ void StringCell::print() const
 
 double StringCell::getDoubleValue() const
 {
-    return formulaValue;
+    return formulaValue.value();
+}
+void StringCell::calculateValue(const Table &)
+{
+    if (this->formulaValue.has_value())
+    {
+        if (validation::isValidInteger(value))
+        {
+            this->formulaValue = std::stoi(value);
+        }
+        else if (validation::isValidDouble(value))
+        {
+            this->formulaValue = std::stod(value);
+        }
+        else
+        {
+            this->formulaValue = 0;
+        }
+    }
 }

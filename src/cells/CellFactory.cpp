@@ -18,7 +18,7 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &input)
     }
     if (validation::isValidFormula(str))
     {
-        return createFormula(str.substr(1));
+        return createFormula(str);
     }
     if (validation::isValidString(str))
     {
@@ -39,8 +39,9 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &input)
     throw 20;
 }
 
-std::shared_ptr<Cell> CellFactory::createFormula(const std::string &str)
+std::shared_ptr<Cell> CellFactory::createFormula(const std::string &fullStr)
 {
+    const std::string str = (fullStr.front() == '=') ? fullStr.substr(1) : fullStr;
     unsigned int iter = 0;
 
     int indexOfOperation = -1;

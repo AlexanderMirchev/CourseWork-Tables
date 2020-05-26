@@ -12,3 +12,4 @@ double IntegerCell::getDoubleValue() const
 {
     return value;
 }
+void IntegerCell::calculateValue(const Table &) { return; }

@@ -13,5 +13,6 @@ public:
 
     void print() const override;
     double getDoubleValue() const override;
+    void calculateValue(const Table&) override;
 };
 #endif

@@ -9,7 +9,15 @@ ReferenceCell::ReferenceCell(const std::string &str) : Cell(str)
 
 double ReferenceCell::getDoubleValue() const
 {
-    return 0;
+    return this->value.value();
+}
+
+void ReferenceCell::calculateValue(const Table &table)
+{
+    if (!this->value.has_value())
+    {
+        this->value = table[this->row][this->col]->getDoubleValue();
+    } 
 }
 
 std::pair<int, int> ReferenceCell::parseFromString(const std::string &str)

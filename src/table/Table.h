@@ -7,6 +7,7 @@
 #include "../cells/Cell.h"
 #include "Row.h"
 
+class Row;
 class Table
 {
 private:

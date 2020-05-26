@@ -12,3 +12,4 @@ double DoubleCell::getDoubleValue() const
 {
     return value;
 }
+void DoubleCell::calculateValue(const Table &) { return; }
