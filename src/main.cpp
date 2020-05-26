@@ -1,4 +1,6 @@
 #include "Session.h"
+#include "cells/CellFactory.h"
+#include <iostream>
 
 int main()
 {
@@ -10,5 +12,7 @@ int main()
     Session session;
     session.start();
 
+    // std::string trimmed = CellFactory::trim("    kurvi belo23 ");
+    // std::cout << "'" << trimmed <<"'\n";
     return 0;
 }

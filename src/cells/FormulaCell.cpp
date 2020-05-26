@@ -2,10 +2,12 @@
 #include <iostream>
 
 FormulaCell::FormulaCell(const std::string &str,
-                         std::vector<std::shared_ptr<Cell>> &&contents,
-                         std::vector<char> &&operations)
-    : Cell(str), cellContents{contents}, operations{operations} {std::cout << "formula cell made"<<std::endl;}
-
-double FormulaCell::getDoubleValue() const {
+                         const std::shared_ptr<Cell> &firstPart,
+                         const std::shared_ptr<Cell> &secondPart,
+                         const char &operation)
+    : Cell(str), firstPart{firstPart},
+      secondPart{secondPart}, operation{operation} {}
+double FormulaCell::getDoubleValue() const
+{
     return 0;
 }

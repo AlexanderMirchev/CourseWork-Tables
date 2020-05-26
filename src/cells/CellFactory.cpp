@@ -9,15 +9,16 @@
 #include "StringCell.h"
 #include <iostream>
 
-std::shared_ptr<Cell> CellFactory::make(const std::string &str, const Table &table)
+std::shared_ptr<Cell> CellFactory::make(const std::string &input, const Table &table)
 {
+    const std::string str = trim(input);
     if (str.empty())
     {
         return std::shared_ptr<Cell>(nullptr);
     }
     if (validation::isValidFormula(str))
     {
-        return createFormula(str, table);
+        return createFormula(str.substr(1), table);
     }
     if (validation::isValidString(str))
     {
@@ -41,28 +42,47 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &str, const Table &tab
 std::shared_ptr<Cell> CellFactory::createFormula(
     const std::string &str, const Table &table)
 {
-    std::vector<std::shared_ptr<Cell>> contents;
-    std::vector<char> operations;
+    std::cout << str << std::endl;
+    unsigned int iter = 0;
 
-    std::string tempWord;
-    unsigned int iter = 1;
+    int indexOfOperation = -1;
+    bool isPower = true;
     while (iter < str.size())
     {
-        if (validation::isOperation(str[iter]))
+        if (validation::isOperation(str[iter]) && iter != str.size() - 1)
         {
-            contents.push_back(CellFactory::make(tempWord, table));
-            operations.push_back(str[iter]);
-            tempWord.clear();
-        }
-        else if (str[iter] != ' ')
-        {
-            tempWord.push_back(str[iter]);
+            if (str[iter] == '+' || str[iter] == '-')
+            {
+                return std::shared_ptr<Cell>(
+                    new FormulaCell(
+                        str, createFormula(str.substr(0, iter), table),
+                        createFormula(str.substr(iter + 1), table),
+                        str[iter]));
+            }
+            if ((str[iter] == '*' || str[iter] == '/') && isPower)
+            {
+                indexOfOperation = iter;
+                isPower = false;
+            }
+            else
+            {
+                indexOfOperation = iter;
+            }
         }
         ++iter;
     }
-    contents.push_back(CellFactory::make(tempWord, table));
-    return std::shared_ptr<Cell>(
-        new FormulaCell(str, std::move(contents), std::move(operations)));
+    if (indexOfOperation >= 0)
+    {
+        return std::shared_ptr<Cell>(
+            new FormulaCell(
+                str, createFormula(str.substr(0, indexOfOperation), table),
+                createFormula(str.substr(indexOfOperation + 1), table),
+                str[indexOfOperation]));
+    }
+    else
+    {
+        return make(str, table);
+    }
 }
 
 std::shared_ptr<Cell> CellFactory::createReference(
@@ -74,4 +94,16 @@ std::shared_ptr<Cell> CellFactory::createReference(
     // std::cout << rowNum << "," << colNum << std::endl;
 
     return table[rowNum - 1][colNum - 1];
+}
+
+std::string CellFactory::trim(const std::string & str)
+{
+    const size_t firstNotSpace = str.find_first_not_of(' ');
+    const size_t lastNotSpace = str.find_last_not_of(' ');
+    if(firstNotSpace == std::string::npos) {
+        return std::string();
+    }
+    else {
+        return str.substr(firstNotSpace, lastNotSpace - firstNotSpace + 1);
+    }
 }

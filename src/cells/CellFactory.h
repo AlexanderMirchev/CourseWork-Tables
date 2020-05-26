@@ -14,5 +14,6 @@ public:
 private:
     static std::shared_ptr<Cell> createFormula(const std::string&, const Table&);
     static std::shared_ptr<Cell> createReference(const std::string&, const Table&);
+    static std::string trim(const std::string&);
 };
 #endif

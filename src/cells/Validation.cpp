@@ -6,6 +6,10 @@ bool validation::isValidInteger(const std::string &str)
 {
     if (isValidFirstCharInNumber(str.front()))
     {
+        if (!isNumber(str.front()) && str.size() == 1)
+        {
+            return false;
+        }
         unsigned int iter = 1;
         while (iter < str.size())
         {
@@ -24,6 +28,10 @@ bool validation::isValidDouble(const std::string &str)
 {
     if (isValidFirstCharInNumber(str.front()))
     {
+        if (!isNumber(str.front()) && str.size() == 1)
+        {
+            return false;
+        }
         unsigned int iter = 1;
         int numberOfPoints = 0;
         while (iter < str.size())
@@ -45,7 +53,7 @@ bool validation::isValidDouble(const std::string &str)
 
 bool validation::isValidString(const std::string &str)
 {
-    return str.front() == '"' && str.back() == '"';
+    return str.front() == '"' && str.back() == '"' && str.size() > 1;
 }
 
 bool validation::isValidReference(const std::string &str)
@@ -80,7 +88,7 @@ bool validation::isValidReference(const std::string &str)
 }
 bool validation::isValidFormula(const std::string &str)
 {
-    return str.front() == '=';
+    return str.front() == '=' && str.size() > 1;
 }
 bool validation::isNumber(const char &c)
 {
