@@ -1,7 +1,7 @@
 #include "Session.h"
 #include <iostream>
 #include "utilities/Validation.h"
-#include "cells/ReferenceCell.h"
+#include "cells/ReferenceValue.h"
 
 void Session::start()
 {
@@ -27,7 +27,7 @@ void Session::start()
                 if (validation::isValidReference(command.second.value()))
                 {
                     const std::pair<int, int> reference =
-                        ReferenceCell::parseFromString(command.second.value());
+                        ReferenceValue::parseFromString(command.second.value());
                     std::cout << reference.first <<","<<reference.second << std::endl;
                     std::cout << "Current value: ";
                     if (this->tableController

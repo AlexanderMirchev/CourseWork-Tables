@@ -1,18 +1,18 @@
-#ifndef STRINGCELL_H
-#define STRINGCELL_H
+#ifndef STRINGVALUE_H
+#define STRINGVALUE_H
 
-#include "Cell.h"
+#include "CellValue.h"
 #include <optional>
 
-class StringCell : public Cell
+class StringValue : public CellValue
 {
 private:
     std::string value;
     std::optional<double> formulaValue;
 
 public:
-    StringCell(const std::string &);
-    ~StringCell() = default;
+    StringValue(const std::string &);
+    ~StringValue() = default;
 
     void print() const override;
     double getDoubleValue() const override;

@@ -12,7 +12,7 @@ bool validation::isValidInteger(const std::string &str)
         unsigned int iter = 1;
         while (iter < str.size())
         {
-            if (str[iter] == '.')
+            if (!isNumber(str[iter]))
             {
                 return false;
             }
@@ -43,6 +43,11 @@ bool validation::isValidDouble(const std::string &str)
             {
                 ++numberOfPoints;
             }
+            else if (!isNumber(str[iter]))
+            {
+                return false;
+            }
+            
             ++iter;
         }
         return true;

@@ -1,26 +1,32 @@
-#include "ReferenceCell.h"
+#include "ReferenceValue.h"
+#include <iostream>
 
-ReferenceCell::ReferenceCell(const std::string &str) : Cell(str)
+ReferenceValue::ReferenceValue(const std::string &str)
 {
     const std::pair<int, int> coordinates = parseFromString(str);
     row = coordinates.first;
     col = coordinates.second;
 }
 
-double ReferenceCell::getDoubleValue() const
+double ReferenceValue::getDoubleValue() const
 {
     return this->value.value();
 }
 
-void ReferenceCell::calculateValue(const Table &table)
+void ReferenceValue::calculateValue(const Table &table)
 {
     if (!this->value.has_value())
     {
         this->value = table[this->row][this->col]->getDoubleValue();
-    } 
+    }
 }
 
-std::pair<int, int> ReferenceCell::parseFromString(const std::string &str)
+void ReferenceValue::print() const
+{
+    std::cout << value.value();
+}
+
+std::pair<int, int> ReferenceValue::parseFromString(const std::string &str)
 {
     const size_t posOfC = str.find('C');
     const int rowNum = std::stoi(str.substr(1, posOfC));

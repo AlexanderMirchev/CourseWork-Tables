@@ -3,11 +3,11 @@
 #include "../utilities/Validation.h"
 #include "../utilities/Utility.h"
 
-#include "DoubleCell.h"
-#include "IntegerCell.h"
-#include "FormulaCell.h"
-#include "ReferenceCell.h"
-#include "StringCell.h"
+#include "DoubleValue.h"
+#include "FormulaValue.h"
+#include "IntegerValue.h"
+#include "ReferenceValue.h"
+#include "StringValue.h"
 
 std::shared_ptr<Cell> CellFactory::make(const std::string &input)
 {
@@ -16,30 +16,40 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &input)
     {
         return std::shared_ptr<Cell>(nullptr);
     }
+    else
+    {
+        return std::shared_ptr<Cell>(new Cell(str, makeValue(str)));
+    }
+
+    throw 20;
+}
+
+std::shared_ptr<CellValue> CellFactory::makeValue(const std::string &str)
+{
     if (validation::isValidFormula(str))
     {
         return createFormula(str);
     }
     if (validation::isValidString(str))
     {
-        return std::shared_ptr<Cell>(new StringCell(str));
+        return std::shared_ptr<CellValue>(new StringValue(str));
     }
     if (validation::isValidReference(str))
     {
-        return std::shared_ptr<Cell>(new ReferenceCell(str));
+        return std::shared_ptr<CellValue>(new ReferenceValue(str));
     }
     if (validation::isValidInteger(str))
     {
-        return std::shared_ptr<Cell>(new IntegerCell(str));
+        return std::shared_ptr<CellValue>(new IntegerValue(str));
     }
     if (validation::isValidDouble(str))
     {
-        return std::shared_ptr<Cell>(new DoubleCell(str));
+        return std::shared_ptr<CellValue>(new DoubleValue(str));
     }
     throw 20;
 }
 
-std::shared_ptr<Cell> CellFactory::createFormula(const std::string &fullStr)
+std::shared_ptr<CellValue> CellFactory::createFormula(const std::string &fullStr)
 {
     const std::string str = (fullStr.front() == '=') ? fullStr.substr(1) : fullStr;
     unsigned int iter = 0;
@@ -52,9 +62,9 @@ std::shared_ptr<Cell> CellFactory::createFormula(const std::string &fullStr)
         {
             if (str[iter] == '+' || str[iter] == '-')
             {
-                return std::shared_ptr<Cell>(
-                    new FormulaCell(
-                        str, createFormula(str.substr(0, iter)),
+                return std::shared_ptr<CellValue>(
+                    new FormulaValue(
+                        createFormula(str.substr(0, iter)),
                         createFormula(str.substr(iter + 1)),
                         str[iter]));
             }
@@ -72,14 +82,14 @@ std::shared_ptr<Cell> CellFactory::createFormula(const std::string &fullStr)
     }
     if (indexOfOperation >= 0)
     {
-        return std::shared_ptr<Cell>(
-            new FormulaCell(
-                str, createFormula(str.substr(0, indexOfOperation)),
+        return std::shared_ptr<CellValue>(
+            new FormulaValue(
+                createFormula(str.substr(0, indexOfOperation)),
                 createFormula(str.substr(indexOfOperation + 1)),
                 str[indexOfOperation]));
     }
     else
     {
-        return make(str);
+        return makeValue(str);
     }
 }

@@ -1,22 +1,22 @@
-#include "StringCell.h"
+#include "StringValue.h"
 #include <iostream>
 #include "../utilities/Validation.h"
 
-StringCell::StringCell(const std::string &str) : Cell(str)
+StringValue::StringValue(const std::string &str)
 {
     this->value = str.substr(1, str.size() - 2);
 }
 
-void StringCell::print() const
+void StringValue::print() const
 {
     std::cout << value;
 }
 
-double StringCell::getDoubleValue() const
+double StringValue::getDoubleValue() const
 {
     return formulaValue.value();
 }
-void StringCell::calculateValue(const Table &)
+void StringValue::calculateValue(const Table &)
 {
     if (this->formulaValue.has_value())
     {

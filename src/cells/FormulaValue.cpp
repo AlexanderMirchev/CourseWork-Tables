@@ -1,12 +1,13 @@
-#include "FormulaCell.h"
+#include "FormulaValue.h"
 #include <math.h>
+#include <iostream>
 
-FormulaCell::FormulaCell(const std::string &str,
-                         const std::shared_ptr<Cell> &firstPart,
-                         const std::shared_ptr<Cell> &secondPart, const char &operation)
-    : Cell(str), firstPart{firstPart}, secondPart{secondPart}, operation{operation} {}
-double FormulaCell::getDoubleValue() const { return value.value(); }
-void FormulaCell::calculateValue(const Table &table)
+FormulaValue::FormulaValue(const std::shared_ptr<CellValue> &firstPart,
+                           const std::shared_ptr<CellValue> &secondPart,
+                           const char &operation)
+    : firstPart{firstPart}, secondPart{secondPart}, operation{operation} {}
+double FormulaValue::getDoubleValue() const { return value.value(); }
+void FormulaValue::calculateValue(const Table &table)
 {
     this->firstPart->calculateValue(table);
     this->secondPart->calculateValue(table);
@@ -34,4 +35,7 @@ void FormulaCell::calculateValue(const Table &table)
             pow(this->value.value(), this->secondPart->getDoubleValue());
         }
     }
+}
+void FormulaValue::print() const {
+    std::cout << std::boolalpha << this->value.has_value();
 }

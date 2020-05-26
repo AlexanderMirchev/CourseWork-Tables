@@ -1,9 +1,8 @@
 #include "Cell.h"
 #include <iostream>
 
-Cell::Cell(const std::string &str) : baseValue{str}
-{
-}
+Cell::Cell(const std::string &str, const std::shared_ptr<CellValue> &value)
+    : baseValue{str}, value{value} {}
 
 const std::string &Cell::getBaseValue() const
 {
@@ -24,6 +23,15 @@ void Cell::removeDependantCell(const std::shared_ptr<Cell> &cell)
         }
     }
 }
-void Cell::print() const {
-    std::cout << baseValue;
+void Cell::print() const
+{
+    this->value->print();
+}
+double Cell::getDoubleValue() const
+{
+    return this->value->getDoubleValue();
+}
+void Cell::calculateValue(const Table &table)
+{
+    this->value->calculateValue(table);
 }

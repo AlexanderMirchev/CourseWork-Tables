@@ -1,16 +1,16 @@
-#ifndef INTEGERCELL_H
-#define INTEGERCELL_H
+#ifndef INTEGERVALUE_H
+#define INTEGERVALUE_H
 
-#include "Cell.h"
+#include "CellValue.h"
 
-class IntegerCell: public Cell
+class IntegerValue: public CellValue
 {
 private:
     int value;
     
 public:
-    IntegerCell(const std::string&);
-    ~IntegerCell() = default;
+    IntegerValue(const std::string&);
+    ~IntegerValue() = default;
 
     void print() const override;
     double getDoubleValue() const override;

@@ -1,15 +1,15 @@
-#ifndef DOUBLECELL_H
-#define DOUBLECELL_H
+#ifndef DOUBLEVALUE_H
+#define DOUBLEVALUE_H
 
-#include "Cell.h"
+#include "CellValue.h"
 
-class DoubleCell: public Cell
+class DoubleValue: public CellValue
 {
 private:
     double value;
 
 public:
-    DoubleCell(const std::string&);
+    DoubleValue(const std::string&);
 
     void print() const override;
     double getDoubleValue() const override;
