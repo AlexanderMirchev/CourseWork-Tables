@@ -5,6 +5,19 @@
 StringValue::StringValue(const std::string &str)
 {
     this->value = str.substr(1, str.size() - 2);
+
+    if (validation::isValidInteger(value))
+    {
+        this->formulaValue = std::stoi(value);
+    }
+    else if (validation::isValidDouble(value))
+    {
+        this->formulaValue = std::stod(value);
+    }
+    else
+    {
+        this->formulaValue = 0;
+    }
 }
 
 void StringValue::print() const
@@ -14,23 +27,11 @@ void StringValue::print() const
 
 double StringValue::getDoubleValue() const
 {
-    return formulaValue.value();
+    return formulaValue;
 }
-void StringValue::calculateValue(const Table &)
-{
-    if (this->formulaValue.has_value())
-    {
-        if (validation::isValidInteger(value))
-        {
-            this->formulaValue = std::stoi(value);
-        }
-        else if (validation::isValidDouble(value))
-        {
-            this->formulaValue = std::stod(value);
-        }
-        else
-        {
-            this->formulaValue = 0;
-        }
-    }
-}
+void StringValue::calculateValue(const Table &) { return; }
+
+void StringValue::setDependantCell(
+    const std::shared_ptr<Cell> &, Table &) const { return; }
+
+void StringValue::nullify() { return; }

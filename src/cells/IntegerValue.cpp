@@ -13,3 +13,6 @@ double IntegerValue::getDoubleValue() const
     return value;
 }
 void IntegerValue::calculateValue(const Table &) { return; }
+void IntegerValue::setDependantCell(
+    const std::shared_ptr<Cell> &, Table &) const { return; }
+void IntegerValue::nullify() { return; }

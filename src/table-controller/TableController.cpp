@@ -38,6 +38,16 @@ void TableController::editCell(const size_t &row, const size_t &col,
     if (!this->table.has_value())
     {
     }
-    this->table.value()[row][col] = CellFactory::make(newValue);
+    if (this->table.value()[row][col] == nullptr)
+    {
+        this->table.value()[row][col] = CellFactory::make(newValue);
+    }
+    else
+    {
+        this->table.value()[row][col]->setValue(CellFactory::makeValue(newValue));
+    }
+    
+
     table.value().considerWidth(newValue.size(), col);
+    this->table.value()[row][col]->readyCell(this->table.value());
 }

@@ -15,5 +15,7 @@ public:
     void print() const override;
     double getDoubleValue() const override;
     void calculateValue(const Table&) override;
+    void setDependantCell(const std::shared_ptr<Cell> &, Table&) const override;
+    void nullify() override;
 };
 #endif

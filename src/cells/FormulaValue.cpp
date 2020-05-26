@@ -32,10 +32,22 @@ void FormulaValue::calculateValue(const Table &table)
         }
         else
         {
-            pow(this->value.value(), this->secondPart->getDoubleValue());
+            value = pow(this->value.value(), this->secondPart->getDoubleValue());
         }
     }
 }
-void FormulaValue::print() const {
-    std::cout << std::boolalpha << this->value.has_value();
+void FormulaValue::print() const
+{
+    std::cout << this->value.value();
+}
+void FormulaValue::setDependantCell(const std::shared_ptr<Cell> &cell, Table &table) const
+{
+    this->firstPart->setDependantCell(cell, table);
+    this->secondPart->setDependantCell(cell, table);
+}
+void FormulaValue::nullify()
+{
+    this->value = std::nullopt;
+    this->firstPart->nullify();
+    this->secondPart->nullify();
 }

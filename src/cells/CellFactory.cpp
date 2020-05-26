@@ -8,6 +8,7 @@
 #include "IntegerValue.h"
 #include "ReferenceValue.h"
 #include "StringValue.h"
+#include <iostream>
 
 std::shared_ptr<Cell> CellFactory::make(const std::string &input)
 {
@@ -26,6 +27,11 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &input)
 
 std::shared_ptr<CellValue> CellFactory::makeValue(const std::string &str)
 {
+    if (str.empty())
+    {
+        return nullptr;
+    }
+
     if (validation::isValidFormula(str))
     {
         return createFormula(str);
@@ -64,8 +70,8 @@ std::shared_ptr<CellValue> CellFactory::createFormula(const std::string &fullStr
             {
                 return std::shared_ptr<CellValue>(
                     new FormulaValue(
-                        createFormula(str.substr(0, iter)),
-                        createFormula(str.substr(iter + 1)),
+                        createFormula(utility::trim(str.substr(0, iter))),
+                        createFormula(utility::trim(str.substr(iter + 1))),
                         str[iter]));
             }
             if ((str[iter] == '*' || str[iter] == '/') && isPower)
@@ -84,12 +90,12 @@ std::shared_ptr<CellValue> CellFactory::createFormula(const std::string &fullStr
     {
         return std::shared_ptr<CellValue>(
             new FormulaValue(
-                createFormula(str.substr(0, indexOfOperation)),
-                createFormula(str.substr(indexOfOperation + 1)),
+                createFormula(utility::trim(str.substr(0, indexOfOperation))),
+                createFormula(utility::trim(str.substr(indexOfOperation + 1))),
                 str[indexOfOperation]));
     }
     else
     {
-        return makeValue(str);
+        return makeValue(utility::trim(str));
     }
 }

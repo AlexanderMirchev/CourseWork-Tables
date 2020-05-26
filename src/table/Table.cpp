@@ -4,10 +4,12 @@
 
 void Table::considerWidth(const size_t &width, const unsigned int &col)
 {
-    while(columnWidths.size() <= col) {
+    while (columnWidths.size() <= col)
+    {
         columnWidths.push_back(1);
     }
-    if(width > columnWidths[col]) {
+    if (width > columnWidths[col])
+    {
         columnWidths[col] = width;
     }
 }
@@ -29,7 +31,8 @@ Row &Table::operator[](const size_t &row)
 
 const Row Table::operator[](const size_t &row) const
 {
-    if(row >= table.size()) {
+    if (row >= table.size())
+    {
         return Row();
     }
     return table[row];
@@ -43,23 +46,29 @@ void Table::print() const
         for (size_t col = 0; col < columnWidths.size(); col++)
         {
             std::cout << std::setw(columnWidths[col]);
-            if(col < table[row].size() && table[row][col] != nullptr) {
+            if (col < table[row].size() && table[row][col] != nullptr)
+            {
                 table[row][col]->print();
             }
-            else {
+            else
+            {
                 std::cout << " ";
             }
             std::cout << "|";
         }
-        
-        // for (const std::shared_ptr<Cell> &cell : table[row])
-        // {
-        //     if (cell != nullptr)
-        //     {
-        //         cell->print();
-        //     }
-        //     std::cout << "|";
-        // }
         std::cout << std::endl;
+    }
+}
+void Table::makeAllCalculations()
+{
+    for (Row &row : table)
+    {
+        for (size_t i = 0; i < row.size(); i++)
+        {
+            if (row[i] != nullptr)
+            {
+                row[i]->readyCell(*this);
+            }
+        }
     }
 }

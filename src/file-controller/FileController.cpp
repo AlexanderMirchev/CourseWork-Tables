@@ -16,6 +16,7 @@ void FileController::open(const std::string &filename, Table &table)
     }
     setSource(filename);
     fetch(table);
+    table.makeAllCalculations();
 }
 void FileController::close()
 {

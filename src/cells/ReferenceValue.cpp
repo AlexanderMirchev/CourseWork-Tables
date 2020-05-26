@@ -17,13 +17,34 @@ void ReferenceValue::calculateValue(const Table &table)
 {
     if (!this->value.has_value())
     {
-        this->value = table[this->row][this->col]->getDoubleValue();
+        if (table[this->row][this->col] == nullptr)
+        {
+            this->value = 0;
+        }
+        else
+        {
+            this->value = table[this->row][this->col]->getDoubleValue();
+        }
     }
+}
+
+void ReferenceValue::setDependantCell(
+    const std::shared_ptr<Cell> &cell, Table &table) const
+{
+    if (table[this->row][this->col] == nullptr)
+    {
+        table[this->row][this->col] = std::shared_ptr<Cell>(new Cell("", nullptr));
+    }
+    table[this->row][this->col]->addDependantCell(cell);
 }
 
 void ReferenceValue::print() const
 {
     std::cout << value.value();
+}
+void ReferenceValue::nullify()
+{
+    this->value = std::nullopt;
 }
 
 std::pair<int, int> ReferenceValue::parseFromString(const std::string &str)

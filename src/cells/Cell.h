@@ -25,8 +25,9 @@ public:
     void addDependantCell(const std::shared_ptr<Cell> &);
     void removeDependantCell(const std::shared_ptr<Cell> &);
 
+    void setValue(const std::shared_ptr<CellValue> &);
     void print() const;
     double getDoubleValue() const;
-    void calculateValue(const Table &);
+    void readyCell(Table &);
 };
 #endif

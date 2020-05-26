@@ -27,5 +27,7 @@ public:
     const Row operator[](const size_t &row) const;
 
     void print() const;
+
+    void makeAllCalculations();
 };
 #endif
