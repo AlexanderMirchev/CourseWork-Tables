@@ -21,6 +21,7 @@ public:
 
     /*
         Returns the value of the cell used for formulas
+        May throw std::bad_optional_access
     */
     virtual double getDoubleValue() const = 0;
 
@@ -35,7 +36,12 @@ public:
     virtual void setDependantCell(const std::shared_ptr<Cell> &, Table &) const = 0;
 
     /*
-        Resets the value without changing the syntax (if contains reference) 
+        Removes dependant cell to the cell value (if contains reference)
+    */
+    virtual void removeDependantCell(const std::shared_ptr<Cell> &, Table &) const = 0;
+    
+    /*
+        Resets the value without changing the syntax (if contains reference)
     */
     virtual void nullify() = 0;
 };

@@ -10,7 +10,8 @@
 #include "StringValue.h"
 #include <iostream>
 
-std::shared_ptr<Cell> CellFactory::make(const std::string &input)
+std::shared_ptr<Cell> CellFactory::make(
+    const std::string &input, const size_t &row, const size_t &col)
 {
     const std::string str = utility::trim(input);
     if (str.empty())
@@ -19,7 +20,7 @@ std::shared_ptr<Cell> CellFactory::make(const std::string &input)
     }
     else
     {
-        return std::shared_ptr<Cell>(new Cell(str, makeValue(str)));
+        return std::shared_ptr<Cell>(new Cell(str, makeValue(str), row, col));
     }
 
     throw 20;

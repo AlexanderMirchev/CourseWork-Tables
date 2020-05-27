@@ -39,7 +39,6 @@ const Row Table::operator[](const size_t &row) const
 }
 void Table::print() const
 {
-    std::cout << table.size() << std::endl;
     for (size_t row = 0; row < table.size(); row++)
     {
         std::cout << "|";
@@ -67,7 +66,7 @@ void Table::makeAllCalculations()
         {
             if (row[i] != nullptr)
             {
-                row[i]->updateCell(*this);
+                row[i]->prepareCell(*this);
             }
         }
     }

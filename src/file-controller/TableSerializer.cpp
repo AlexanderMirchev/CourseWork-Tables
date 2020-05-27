@@ -13,17 +13,17 @@ void TableSerializer::deserializeTable(Table &table) const
     if (file.is_open())
     {
         std::string line;
-        int rowIndex = 0;
+        size_t rowIndex = 0;
         while (std::getline(file, line))
         {
             unsigned int symbolIterator = 0;
-            int wordNumber = 0;
+            size_t wordNumber = 0;
             std::string word;
             while (symbolIterator <= line.size())
             {
                 if (line[symbolIterator] == ',' || symbolIterator == line.size())
                 {
-                    table[rowIndex].push_back(CellFactory::make(word));
+                    table[rowIndex].push_back(CellFactory::make(word, rowIndex, wordNumber));
                     table.considerWidth(word.size(), wordNumber++);
                     word.clear();
                 }

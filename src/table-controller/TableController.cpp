@@ -1,4 +1,5 @@
 #include "TableController.h"
+#include <iostream>
 #include "../cells/CellFactory.h"
 
 const Table &TableController::getTable() const
@@ -40,13 +41,26 @@ void TableController::editCell(const size_t &row, const size_t &col,
     }
     if (this->table.value()[row][col] == nullptr)
     {
-        this->table.value()[row][col] = CellFactory::make(newValue);
+        this->table.value()[row][col] = CellFactory::make(newValue, row, col);
     }
     else
     {
-        this->table.value()[row][col]->setValue(newValue, CellFactory::makeValue(newValue));
+        this->table.value()[row][col]->removeDependencies(this->table.value());
+        this->table.value()[row][col]->setValue(
+            newValue, CellFactory::makeValue(newValue));
     }
 
     table.value().considerWidth(newValue.size(), col);
-    this->table.value()[row][col]->updateCell(this->table.value());
+    if (this->table.value()[row][col] != nullptr)
+    {
+        try
+        {
+            this->table.value()[row][col]->updateCell(
+            this->table.value(), this->table.value()[row][col]);
+        }
+        catch(const std::exception& e)
+        {
+            std::cout << "Formula created a circular dependency" << '\n';
+        }
+    }
 }

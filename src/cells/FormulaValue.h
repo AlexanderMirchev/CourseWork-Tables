@@ -26,6 +26,7 @@ public:
 
     void calculateValue(const Table &) override;
     void setDependantCell(const std::shared_ptr<Cell> &, Table &) const override;
+    void removeDependantCell(const std::shared_ptr<Cell> &, Table &) const override;
     void nullify() override;
     
 };

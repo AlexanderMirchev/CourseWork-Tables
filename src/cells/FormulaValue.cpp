@@ -30,7 +30,14 @@ void FormulaValue::calculateValue(const Table &table)
             }
             else if (this->operation == '/')
             {
-                this->value.value() /= this->secondPart->getDoubleValue();
+                if (this->secondPart->getDoubleValue() == 0)
+                {
+                    this->value = std::nullopt;
+                }
+                else
+                {
+                    this->value.value() /= this->secondPart->getDoubleValue();
+                }
             }
             else
             {
@@ -55,10 +62,18 @@ void FormulaValue::print() const
         std::cout << "ERROR";
     }
 }
-void FormulaValue::setDependantCell(const std::shared_ptr<Cell> &cell, Table &table) const
+void FormulaValue::setDependantCell(
+    const std::shared_ptr<Cell> &cell, Table &table) const
 {
     this->firstPart->setDependantCell(cell, table);
     this->secondPart->setDependantCell(cell, table);
+}
+
+void FormulaValue::removeDependantCell(
+    const std::shared_ptr<Cell> &cell, Table &table) const
+{
+    this->firstPart->removeDependantCell(cell, table);
+    this->secondPart->removeDependantCell(cell, table);
 }
 void FormulaValue::nullify()
 {

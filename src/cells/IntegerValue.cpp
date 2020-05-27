@@ -15,4 +15,6 @@ double IntegerValue::getDoubleValue() const
 void IntegerValue::calculateValue(const Table &) { return; }
 void IntegerValue::setDependantCell(
     const std::shared_ptr<Cell> &, Table &) const { return; }
+void IntegerValue::removeDependantCell(
+    const std::shared_ptr<Cell> &, Table &) const { return; }
 void IntegerValue::nullify() { return; }

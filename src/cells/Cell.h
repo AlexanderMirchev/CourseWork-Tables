@@ -16,12 +16,15 @@ class Table;
 class Cell
 {
 private:
+    size_t row;
+    size_t col;
     std::string baseValue;
     std::shared_ptr<CellValue> value;
     std::vector<std::shared_ptr<Cell>> dependantCells;
 
 public:
-    Cell(const std::string &, const std::shared_ptr<CellValue> &);
+    Cell(const std::string &, const std::shared_ptr<CellValue> &,
+         const size_t &, const size_t &);
 
     /*
         Returns the value from which it's been created
@@ -55,7 +58,18 @@ public:
 
     /*
         Updates the cell and it's dependant cells
+        StartCell is for detecting whether a loop is caused in updating dependant cells
     */
-    void updateCell(Table &);
+    void updateCell(Table &, const std::shared_ptr<Cell> &startCell);
+
+    /*
+        Calculates and links the cell
+    */
+    void prepareCell(Table &);
+
+    /*
+        
+    */
+    void removeDependencies(Table &);
 };
 #endif

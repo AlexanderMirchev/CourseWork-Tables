@@ -15,4 +15,5 @@ double DoubleValue::getDoubleValue() const
 void DoubleValue::calculateValue(const Table &) { return; }
 void DoubleValue::setDependantCell(
     const std::shared_ptr<Cell> &, Table &) const { return; }
+void DoubleValue::removeDependantCell(const std::shared_ptr<Cell> &, Table &) const {return;}
 void DoubleValue::nullify() { return; }

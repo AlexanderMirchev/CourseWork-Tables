@@ -9,8 +9,8 @@ class ReferenceValue : public CellValue
 {
 private:
     std::optional<double> value;
-    int row;
-    int col;
+    size_t row;
+    size_t col;
 
 public:
     ReferenceValue(const std::string &);
@@ -19,8 +19,9 @@ public:
     double getDoubleValue() const override;
     void calculateValue(const Table &) override;
     void setDependantCell(const std::shared_ptr<Cell> &, Table &) const override;
+    void removeDependantCell(const std::shared_ptr<Cell> &, Table &) const override;
     void nullify() override;
 
-    static std::pair<int, int> parseFromString(const std::string &);
+    static std::pair<size_t, size_t> parseFromString(const std::string &);
 };
 #endif

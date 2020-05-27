@@ -33,5 +33,7 @@ void StringValue::calculateValue(const Table &) { return; }
 
 void StringValue::setDependantCell(
     const std::shared_ptr<Cell> &, Table &) const { return; }
+void StringValue::removeDependantCell(
+    const std::shared_ptr<Cell> &, Table &) const { return; }
 
 void StringValue::nullify() { return; }

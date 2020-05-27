@@ -28,7 +28,6 @@ void Session::start()
                 {
                     const std::pair<int, int> reference =
                         ReferenceValue::parseFromString(command.second.value());
-                    std::cout << reference.first <<","<<reference.second << std::endl;
                     std::cout << "Current value: ";
                     if (this->tableController
                             .getTable()[reference.first][reference.second] != nullptr)
@@ -37,11 +36,28 @@ void Session::start()
                                          .getTable()[reference.first][reference.second]
                                          ->getBaseValue();
                     }
-                    std::cout << std::endl;
-                    std::cout << "New Value: ";
-                    std::string newValue;
-                    std::getline(std::cin, newValue);
-                    this->tableController.editCell(reference.first, reference.second, newValue);
+
+                    bool haveOpenDialogue = true;
+                    while (haveOpenDialogue)
+                    {
+                        std::cout << std::endl
+                                  << "Do you want to change it? (y/n) ";
+                        char answer;
+                        std::cin >> answer;
+                        if (answer == 'Y' || answer == 'y')
+                        {
+                            std::cout << "New Value: ";
+                            std::string newValue;
+                            std::cin.ignore();
+                            std::getline(std::cin, newValue);
+                            this->tableController.editCell(reference.first, reference.second, newValue);
+                            haveOpenDialogue = false;
+                        }
+                        else if (answer == 'N' || answer == 'n')
+                        {
+                            haveOpenDialogue = false;
+                        }
+                    }
                 }
                 else
                 {
