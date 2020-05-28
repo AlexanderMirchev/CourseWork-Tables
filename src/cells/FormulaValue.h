@@ -15,6 +15,8 @@ private:
     std::shared_ptr<CellValue> firstPart;
     std::shared_ptr<CellValue> secondPart;
     char operation;
+    size_t minimalWidth;
+    bool isCalculated;
 
 public:
     FormulaValue(const std::shared_ptr<CellValue> &firstPart,
@@ -24,10 +26,10 @@ public:
     void print() const override;
     double getDoubleValue() const override;
 
-    void calculateValue(const Table &) override;
+    void calculateValue(Table &) override;
     void setDependantCell(const std::shared_ptr<Cell> &, Table &) const override;
     void removeDependantCell(const std::shared_ptr<Cell> &, Table &) const override;
     void nullify() override;
-    
+    size_t getMinimalWidth() const override;
 };
 #endif

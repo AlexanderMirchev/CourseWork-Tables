@@ -23,8 +23,7 @@ void TableSerializer::deserializeTable(Table &table) const
             {
                 if (line[symbolIterator] == ',' || symbolIterator == line.size())
                 {
-                    table[rowIndex].push_back(CellFactory::make(word, rowIndex, wordNumber));
-                    table.considerWidth(word.size(), wordNumber++);
+                    table[rowIndex].push_back(CellFactory::make(word, rowIndex, wordNumber++));
                     word.clear();
                 }
                 else

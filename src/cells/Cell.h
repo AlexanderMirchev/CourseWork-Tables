@@ -21,6 +21,7 @@ private:
     std::string baseValue;
     std::shared_ptr<CellValue> value;
     std::vector<std::shared_ptr<Cell>> dependantCells;
+    bool isPrepared;
 
 public:
     Cell(const std::string &, const std::shared_ptr<CellValue> &,
@@ -68,8 +69,10 @@ public:
     void prepareCell(Table &);
 
     /*
-        
+        Remove this cell from all cells that have this cell as dependant
     */
     void removeDependencies(Table &);
+
+    size_t getContentWidth();
 };
 #endif

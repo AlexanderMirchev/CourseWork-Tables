@@ -3,7 +3,7 @@
 
 Cell::Cell(const std::string &str, const std::shared_ptr<CellValue> &value,
            const size_t &row, const size_t &col)
-    : row{row}, col{col}, baseValue{str}, value{value} {}
+    : row{row}, col{col}, baseValue{str}, value{value}, isPrepared{false} {}
 
 const std::string &Cell::getBaseValue() const
 {
@@ -71,11 +71,11 @@ void Cell::removeDependencies(Table &table)
 
 void Cell::updateCell(Table &table, const std::shared_ptr<Cell> &startCell)
 {
+    std::cout << "Updating :" << row << " " << col << std::endl;
     if (this->value != nullptr)
     {
         this->value->nullify();
         this->value->calculateValue(table);
-    
         this->value->setDependantCell(table[this->row][this->col], table);
     }
     bool hasCircularDependency = false;
@@ -102,6 +102,18 @@ void Cell::updateCell(Table &table, const std::shared_ptr<Cell> &startCell)
         this->value->nullify();
         throw std::exception();
     }
+    size_t minimumColumnWidth = 1;
+    for (size_t i = 0; i < table.numberOfRows(); i++)
+    {
+        if (table[i][col] != nullptr &&
+            table[i][col]->value != nullptr &&
+            table[i][col]->value->getMinimalWidth() > minimumColumnWidth)
+        {
+            minimumColumnWidth = table[i][col]->value->getMinimalWidth();
+        }
+    }
+
+    table.setWidth(minimumColumnWidth, col);
 }
 
 void Cell::setValue(const std::string &str, const std::shared_ptr<CellValue> &newValue)
@@ -112,9 +124,17 @@ void Cell::setValue(const std::string &str, const std::shared_ptr<CellValue> &ne
 
 void Cell::prepareCell(Table &table)
 {
-    if (this->value != nullptr)
+    if (!isPrepared)
     {
-        this->value->calculateValue(table);
-        this->value->setDependantCell(table[this->row][this->col], table);
+        if (this->value != nullptr)
+        {
+            this->value->setDependantCell(table[this->row][this->col], table);
+        }
+        isPrepared = true;
+        if (this->value != nullptr)
+        {
+            this->value->calculateValue(table);
+            table.considerWidth(this->value->getMinimalWidth(), col);
+        }
     }
 }

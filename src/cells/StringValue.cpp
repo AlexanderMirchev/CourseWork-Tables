@@ -5,7 +5,7 @@
 StringValue::StringValue(const std::string &str)
 {
     this->value = str.substr(1, str.size() - 2);
-
+    this->minimalWidth = this->value.size();
     if (validation::isValidInteger(value))
     {
         this->formulaValue = std::stoi(value);
@@ -29,7 +29,7 @@ double StringValue::getDoubleValue() const
 {
     return formulaValue;
 }
-void StringValue::calculateValue(const Table &) { return; }
+void StringValue::calculateValue(Table &) { return; }
 
 void StringValue::setDependantCell(
     const std::shared_ptr<Cell> &, Table &) const { return; }
@@ -37,3 +37,4 @@ void StringValue::removeDependantCell(
     const std::shared_ptr<Cell> &, Table &) const { return; }
 
 void StringValue::nullify() { return; }
+size_t StringValue::getMinimalWidth() const { return minimalWidth; }

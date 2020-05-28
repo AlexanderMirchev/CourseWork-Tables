@@ -1,18 +1,19 @@
 #include "FormulaValue.h"
 #include <math.h>
 #include <iostream>
+#include "../utilities/Utility.h"
 
 FormulaValue::FormulaValue(const std::shared_ptr<CellValue> &firstPart,
                            const std::shared_ptr<CellValue> &secondPart,
                            const char &operation)
     : firstPart{firstPart}, secondPart{secondPart}, operation{operation} {}
 double FormulaValue::getDoubleValue() const { return value.value(); }
-void FormulaValue::calculateValue(const Table &table)
+void FormulaValue::calculateValue(Table &table)
 {
-    this->firstPart->calculateValue(table);
-    this->secondPart->calculateValue(table);
-    if (!this->value.has_value())
+    if (!isCalculated)
     {
+        this->firstPart->calculateValue(table);
+        this->secondPart->calculateValue(table);
         try
         {
             this->value = this->firstPart->getDoubleValue();
@@ -43,12 +44,24 @@ void FormulaValue::calculateValue(const Table &table)
             {
                 value = pow(this->value.value(), this->secondPart->getDoubleValue());
             }
-            /* code */
         }
         catch (const std::exception &e)
         {
             this->value = std::nullopt;
         }
+        if (this->value.has_value())
+        {
+            this->minimalWidth = utility::getNumberOfCharactersInDouble(this->value.value());
+        }
+        else
+        {
+            /*
+                Size of ERROR
+            */
+            // std::cout << "ERROR" << std::endl;
+            this->minimalWidth = 5;
+        }
+        isCalculated = true;
     }
 }
 void FormulaValue::print() const
@@ -77,7 +90,9 @@ void FormulaValue::removeDependantCell(
 }
 void FormulaValue::nullify()
 {
+    this->isCalculated = false;
     this->value = std::nullopt;
     this->firstPart->nullify();
     this->secondPart->nullify();
 }
+size_t FormulaValue::getMinimalWidth() const { return minimalWidth; }

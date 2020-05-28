@@ -1,4 +1,6 @@
 #include "Utility.h"
+#include <string.h>
+#include <iostream>
 using namespace utility;
 
 std::string utility::trim(const std::string &str)
@@ -13,4 +15,11 @@ std::string utility::trim(const std::string &str)
     {
         return str.substr(firstNotSpace, lastNotSpace - firstNotSpace + 1);
     }
+}
+size_t utility::getNumberOfCharactersInDouble(const double &number)
+{
+    char buffer[50];
+    sprintf(buffer, "%g", number);
+    // std::cout << strlen(buffer) << std::endl;
+    return strlen(buffer);
 }

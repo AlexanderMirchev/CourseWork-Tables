@@ -1,11 +1,14 @@
 #include "ReferenceValue.h"
 #include <iostream>
+#include "../utilities/Utility.h"
 
 ReferenceValue::ReferenceValue(const std::string &str)
 {
     const std::pair<size_t, size_t> coordinates = parseFromString(str);
     row = coordinates.first;
     col = coordinates.second;
+    this->isCalculated = false;
+    minimalWidth = 3;
 }
 
 double ReferenceValue::getDoubleValue() const
@@ -13,7 +16,7 @@ double ReferenceValue::getDoubleValue() const
     return this->value.value();
 }
 
-void ReferenceValue::calculateValue(const Table &table)
+void ReferenceValue::calculateValue(Table &table)
 {
     if (!this->value.has_value())
     {
@@ -25,12 +28,25 @@ void ReferenceValue::calculateValue(const Table &table)
         {
             try
             {
+                table[this->row][this->col]->prepareCell(table);
                 this->value = table[this->row][this->col]->getDoubleValue();
             }
             catch (const std::exception &e)
             {
                 this->value = std::nullopt;
             }
+        }
+        if (this->value.has_value())
+        {
+            this->minimalWidth = utility::getNumberOfCharactersInDouble(this->value.value());
+        }
+        else
+        {
+            /*
+                Size of ERROR
+            */
+            // std::cout << "ERROR" << std::endl;
+            this->minimalWidth = 5;
         }
     }
 }
@@ -67,6 +83,7 @@ void ReferenceValue::print() const
 
 void ReferenceValue::nullify()
 {
+    this->isCalculated = false;
     this->value = std::nullopt;
 }
 
@@ -77,3 +94,5 @@ std::pair<size_t, size_t> ReferenceValue::parseFromString(const std::string &str
     const size_t colNum = std::stoi(str.substr(posOfC + 1));
     return std::pair<size_t, size_t>(rowNum - 1, colNum - 1);
 }
+
+size_t ReferenceValue::getMinimalWidth() const { return minimalWidth; }

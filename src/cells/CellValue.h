@@ -28,21 +28,23 @@ public:
     /*
         Calculates the value of the cell (if there is anything to calculate)
     */
-    virtual void calculateValue(const Table &) = 0;
+    virtual void calculateValue(Table &) = 0;
 
     /*
         Sets a dependant cell to the cell value (if contains a reference to another cell)
     */
     virtual void setDependantCell(const std::shared_ptr<Cell> &, Table &) const = 0;
 
-    /*
+    /*  
         Removes dependant cell to the cell value (if contains reference)
     */
     virtual void removeDependantCell(const std::shared_ptr<Cell> &, Table &) const = 0;
-    
+
     /*
         Resets the value without changing the syntax (if contains reference)
     */
     virtual void nullify() = 0;
+
+    virtual size_t getMinimalWidth() const = 0;
 };
 #endif

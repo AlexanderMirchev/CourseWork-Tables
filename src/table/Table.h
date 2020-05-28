@@ -30,7 +30,9 @@ public:
         Sets a bigger field width for column if size is 
         bigger than current max for column
     */
-    void considerWidth(const size_t &, const unsigned int &col);
+    void considerWidth(const size_t &, const size_t &col);
+
+    void setWidth(const size_t&, const size_t& col);
 
     /*
         Returns modifiable reference to row and adds

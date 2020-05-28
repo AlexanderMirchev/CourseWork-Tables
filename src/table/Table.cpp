@@ -2,8 +2,9 @@
 #include <iostream>
 #include <iomanip>
 
-void Table::considerWidth(const size_t &width, const unsigned int &col)
+void Table::considerWidth(const size_t &width, const size_t &col)
 {
+    // std::cout << col << " " << width << std::endl;
     while (columnWidths.size() <= col)
     {
         columnWidths.push_back(1);
@@ -12,6 +13,14 @@ void Table::considerWidth(const size_t &width, const unsigned int &col)
     {
         columnWidths[col] = width;
     }
+}
+void Table::setWidth(const size_t &width, const size_t &col)
+{
+    while (columnWidths.size() <= col)
+    {
+        columnWidths.push_back(1);
+    }
+    columnWidths[col] = width;
 }
 
 size_t Table::numberOfRows() const
@@ -44,7 +53,7 @@ void Table::print() const
         std::cout << "|";
         for (size_t col = 0; col < columnWidths.size(); col++)
         {
-            std::cout << std::setw(columnWidths[col]);
+            std::cout << std::setw(columnWidths[col]) << std::setprecision(6);
             if (col < table[row].size() && table[row][col] != nullptr)
             {
                 table[row][col]->print();
@@ -66,7 +75,13 @@ void Table::makeAllCalculations()
         {
             if (row[i] != nullptr)
             {
-                row[i]->prepareCell(*this);
+                try
+                {
+                    row[i]->prepareCell(*this);
+                }
+                catch (const std::exception &e)
+                {
+                }
             }
         }
     }
