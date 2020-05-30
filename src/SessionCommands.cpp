@@ -1,6 +1,7 @@
 #include "Session.h"
-#include "exceptions/Exceptions.cpp"
 #include <iostream>
+
+#include "exceptions/Exceptions.cpp"
 #include "utilities/Validation.h"
 #include "cells/ReferenceValue.h"
 

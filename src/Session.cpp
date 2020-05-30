@@ -58,6 +58,10 @@ void Session::start()
         {
             std::cout << "Invalid input.\n";
         }
+        if (shouldContinue)
+        {
+            std::cout << std::endl;
+        }
     }
 }
 const std::string Session::HELP_MESSAGE =

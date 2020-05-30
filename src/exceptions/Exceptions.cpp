@@ -22,7 +22,7 @@ public:
     {
         sprintf(
             message, "Row %d, Col %d, %s is of unknown type.",
-            row, col, value);
+            row + 1, col + 1, value);
     }
     const char *what() const noexcept override
     {
@@ -72,5 +72,4 @@ struct InvalidReference : public CustomException
         return "Reference is invalid.";
     }
 };
-
 #endif

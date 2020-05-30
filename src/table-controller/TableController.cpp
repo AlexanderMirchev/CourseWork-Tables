@@ -56,7 +56,6 @@ void TableController::editCell(const size_t &row, const size_t &col,
             newValue, CellFactory::makeValue(newValue));
     }
 
-    // table.value().considerWidth(newValue.size(), col);
     std::vector<size_t> columnsToUpdate;
     if (this->table.value()[row][col] != nullptr)
     {
@@ -77,7 +76,6 @@ void TableController::updateColumns(const std::vector<size_t> &columns)
 {
     for (const size_t &col : columns)
     {
-        std::cout << col << std::endl;
         size_t minimumColumnWidth = 1;
         for (size_t i = 0; i < this->table.value().numberOfRows(); i++)
         {

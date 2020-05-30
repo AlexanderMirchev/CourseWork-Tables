@@ -35,16 +35,8 @@ void Cell::print() const
     }
     else
     {
-        try
-        {
-            this->value->print();
-        }
-        catch (const std::exception &e)
-        {
-            std::cout << "ERROR";
-        }
+        this->value->print();
     }
-    // std::cout << dependantCells.size();
 }
 
 double Cell::getDoubleValue() const
@@ -68,13 +60,10 @@ void Cell::updateCell(Table &table,
                       const std::shared_ptr<Cell> &startCell,
                       std::vector<size_t> &updatedColumns)
 {
-    std::cout << "Updating cell:" << row << " " << col;
     if (this->value != nullptr)
     {
         this->value->nullify();
         this->value->calculateValue(table);
-        this->value->print();
-        std::cout << std::endl;
         this->value->setDependantCell(table[this->row][this->col], table);
     }
     utility::uniquePushBack(updatedColumns, this->col);

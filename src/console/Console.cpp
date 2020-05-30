@@ -5,6 +5,7 @@
 Console::Command Console::readCommand()
 {
     std::string command;
+    std::cout << "~ ";
     std::getline(std::cin, command);
 
     const size_t firstSpaceIndex = command.find(' ');

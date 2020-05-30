@@ -1,7 +1,6 @@
 #include "TableSerializer.h"
 
 #include <fstream>
-#include <iostream>
 #include "../cells/CellFactory.h"
 #include "../exceptions/Exceptions.cpp"
 
