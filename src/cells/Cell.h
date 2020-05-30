@@ -61,7 +61,8 @@ public:
         Updates the cell and it's dependant cells
         StartCell is for detecting whether a loop is caused in updating dependant cells
     */
-    void updateCell(Table &, const std::shared_ptr<Cell> &startCell);
+    void updateCell(Table &, const std::shared_ptr<Cell> &startCell,
+                    std::vector<size_t> &updatedColumns);
 
     /*
         Calculates and links the cell
@@ -73,6 +74,6 @@ public:
     */
     void removeDependencies(Table &);
 
-    size_t getContentWidth();
+    size_t getContentWidth() const;
 };
 #endif

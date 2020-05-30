@@ -8,7 +8,7 @@ ReferenceValue::ReferenceValue(const std::string &str)
     row = coordinates.first;
     col = coordinates.second;
     this->isCalculated = false;
-    minimalWidth = 3;
+    this->minimalWidth = 0;
 }
 
 double ReferenceValue::getDoubleValue() const
@@ -39,14 +39,6 @@ void ReferenceValue::calculateValue(Table &table)
         if (this->value.has_value())
         {
             this->minimalWidth = utility::getNumberOfCharactersInDouble(this->value.value());
-        }
-        else
-        {
-            /*
-                Size of ERROR
-            */
-            // std::cout << "ERROR" << std::endl;
-            this->minimalWidth = 5;
         }
     }
 }
@@ -95,4 +87,11 @@ std::pair<size_t, size_t> ReferenceValue::parseFromString(const std::string &str
     return std::pair<size_t, size_t>(rowNum - 1, colNum - 1);
 }
 
-size_t ReferenceValue::getMinimalWidth() const { return minimalWidth; }
+size_t ReferenceValue::getMinimalWidth() const
+{
+    if (!this->value.has_value())
+    {
+        return 5;
+    }
+    return minimalWidth;
+}

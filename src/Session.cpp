@@ -1,7 +1,5 @@
 #include "Session.h"
 #include <iostream>
-#include "utilities/Validation.h"
-#include "cells/ReferenceValue.h"
 
 void Session::start()
 {
@@ -9,64 +7,24 @@ void Session::start()
     while (shouldContinue)
     {
         Console::Command command = Console::readCommand();
+        bool inputIsValid = true;
         if (command.second.has_value())
         {
             if (command.first == "open")
             {
-                Table newTable;
-                this->fileController.open(command.second.value(), newTable);
-                this->tableController.setTable(newTable);
+                open(command.second.value());
             }
             else if (command.first == "saveas")
             {
-                this->fileController.saveas(
-                    command.second.value(), this->tableController.getTable());
+                saveas(command.second.value());
             }
             else if (command.first == "edit")
             {
-                if (validation::isValidReference(command.second.value()))
-                {
-                    const std::pair<int, int> reference =
-                        ReferenceValue::parseFromString(command.second.value());
-                    std::cout << "Current value: ";
-                    if (this->tableController
-                            .getTable()[reference.first][reference.second] != nullptr)
-                    {
-                        std::cout << this->tableController
-                                         .getTable()[reference.first][reference.second]
-                                         ->getBaseValue();
-                    }
-
-                    bool haveOpenDialogue = true;
-                    while (haveOpenDialogue)
-                    {
-                        std::cout << std::endl
-                                  << "Do you want to change it? (y/n) ";
-                        char answer;
-                        std::cin >> answer;
-                        if (answer == 'Y' || answer == 'y')
-                        {
-                            std::cout << "New Value: ";
-                            std::string newValue;
-                            std::cin.ignore();
-                            std::getline(std::cin, newValue);
-                            this->tableController.editCell(reference.first, reference.second, newValue);
-                            haveOpenDialogue = false;
-                        }
-                        else if (answer == 'N' || answer == 'n')
-                        {
-                            haveOpenDialogue = false;
-                        }
-                    }
-                }
-                else
-                {
-                    std::cout << "Invalid reference";
-                }
+                edit(command.second.value());
             }
             else
             {
-                std::cout << "Invalid input\n";
+                inputIsValid = false;
             }
         }
         else
@@ -81,21 +39,24 @@ void Session::start()
             }
             else if (command.first == "close")
             {
-                this->fileController.close();
-                this->tableController.removeTable();
+                close();
             }
             else if (command.first == "save")
             {
-                this->fileController.save(this->tableController.getTable());
+                save();
             }
             else if (command.first == "print")
             {
-                this->tableController.printTable();
+                print();
             }
             else
             {
-                std::cout << "Invalid input\n";
+                inputIsValid = false;
             }
+        }
+        if (!inputIsValid)
+        {
+            std::cout << "Invalid input.\n";
         }
     }
 }

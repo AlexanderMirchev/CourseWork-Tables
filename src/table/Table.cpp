@@ -4,7 +4,6 @@
 
 void Table::considerWidth(const size_t &width, const size_t &col)
 {
-    // std::cout << col << " " << width << std::endl;
     while (columnWidths.size() <= col)
     {
         columnWidths.push_back(1);

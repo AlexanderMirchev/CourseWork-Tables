@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "../cells/CellFactory.h"
+#include "../exceptions/Exceptions.cpp"
 
 TableSerializer::TableSerializer(const std::string &filename) : filename{filename} {}
 
@@ -14,6 +15,7 @@ void TableSerializer::deserializeTable(Table &table) const
     {
         std::string line;
         size_t rowIndex = 0;
+        
         while (std::getline(file, line))
         {
             unsigned int symbolIterator = 0;
@@ -23,7 +25,15 @@ void TableSerializer::deserializeTable(Table &table) const
             {
                 if (line[symbolIterator] == ',' || symbolIterator == line.size())
                 {
-                    table[rowIndex].push_back(CellFactory::make(word, rowIndex, wordNumber++));
+                    try
+                    {
+                        table[rowIndex].push_back(
+                            CellFactory::make(word, rowIndex, wordNumber++));
+                    }
+                    catch (const UnknownDataType &e)
+                    {
+                        throw CannotCreateTable(filename.c_str(), e);
+                    }
                     word.clear();
                 }
                 else

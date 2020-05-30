@@ -16,6 +16,9 @@ private:
 public:
     TableSerializer(const std::string &filename);
 
+    /*
+        Throws CannotCreateTable
+    */
     void deserializeTable(Table &) const;
 
     void serializeTable(const Table &) const;

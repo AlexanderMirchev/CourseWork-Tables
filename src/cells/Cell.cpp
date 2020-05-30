@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include "../utilities/Utility.h"
 #include <iostream>
 
 Cell::Cell(const std::string &str, const std::shared_ptr<CellValue> &value,
@@ -12,14 +13,7 @@ const std::string &Cell::getBaseValue() const
 
 void Cell::addDependantCell(const std::shared_ptr<Cell> &newCell)
 {
-    for (const std::shared_ptr<Cell> &cell : this->dependantCells)
-    {
-        if (cell == newCell)
-        {
-            return;
-        }
-    }
-    this->dependantCells.push_back(newCell);
+    utility::uniquePushBack(dependantCells, newCell);
 }
 
 void Cell::removeDependantCell(const std::shared_ptr<Cell> &cell)
@@ -50,6 +44,7 @@ void Cell::print() const
             std::cout << "ERROR";
         }
     }
+    // std::cout << dependantCells.size();
 }
 
 double Cell::getDoubleValue() const
@@ -69,15 +64,20 @@ void Cell::removeDependencies(Table &table)
     }
 }
 
-void Cell::updateCell(Table &table, const std::shared_ptr<Cell> &startCell)
+void Cell::updateCell(Table &table,
+                      const std::shared_ptr<Cell> &startCell,
+                      std::vector<size_t> &updatedColumns)
 {
-    std::cout << "Updating :" << row << " " << col << std::endl;
+    std::cout << "Updating cell:" << row << " " << col;
     if (this->value != nullptr)
     {
         this->value->nullify();
         this->value->calculateValue(table);
+        this->value->print();
+        std::cout << std::endl;
         this->value->setDependantCell(table[this->row][this->col], table);
     }
+    utility::uniquePushBack(updatedColumns, this->col);
     bool hasCircularDependency = false;
     for (std::shared_ptr<Cell> cell : dependantCells)
     {
@@ -85,35 +85,24 @@ void Cell::updateCell(Table &table, const std::shared_ptr<Cell> &startCell)
         {
             try
             {
-                cell->updateCell(table, startCell);
+                cell->updateCell(table, startCell, updatedColumns);
             }
             catch (const std::exception &e)
             {
                 hasCircularDependency = true;
+                this->value->nullify();
             }
         }
         else
         {
             hasCircularDependency = true;
+            this->value->nullify();
         }
     }
     if (hasCircularDependency)
     {
-        this->value->nullify();
         throw std::exception();
     }
-    size_t minimumColumnWidth = 1;
-    for (size_t i = 0; i < table.numberOfRows(); i++)
-    {
-        if (table[i][col] != nullptr &&
-            table[i][col]->value != nullptr &&
-            table[i][col]->value->getMinimalWidth() > minimumColumnWidth)
-        {
-            minimumColumnWidth = table[i][col]->value->getMinimalWidth();
-        }
-    }
-
-    table.setWidth(minimumColumnWidth, col);
 }
 
 void Cell::setValue(const std::string &str, const std::shared_ptr<CellValue> &newValue)
@@ -137,4 +126,13 @@ void Cell::prepareCell(Table &table)
             table.considerWidth(this->value->getMinimalWidth(), col);
         }
     }
+}
+
+size_t Cell::getContentWidth() const
+{
+    if (this->value == nullptr)
+    {
+        return 0;
+    }
+    return this->value->getMinimalWidth();
 }

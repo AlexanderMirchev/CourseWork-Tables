@@ -6,7 +6,8 @@
 FormulaValue::FormulaValue(const std::shared_ptr<CellValue> &firstPart,
                            const std::shared_ptr<CellValue> &secondPart,
                            const char &operation)
-    : firstPart{firstPart}, secondPart{secondPart}, operation{operation} {}
+    : firstPart{firstPart}, secondPart{secondPart},
+      operation{operation}, minimalWidth{0} {}
 double FormulaValue::getDoubleValue() const { return value.value(); }
 void FormulaValue::calculateValue(Table &table)
 {
@@ -45,21 +46,14 @@ void FormulaValue::calculateValue(Table &table)
                 value = pow(this->value.value(), this->secondPart->getDoubleValue());
             }
         }
-        catch (const std::exception &e)
+        catch (const std::bad_optional_access &e)
         {
             this->value = std::nullopt;
         }
         if (this->value.has_value())
         {
-            this->minimalWidth = utility::getNumberOfCharactersInDouble(this->value.value());
-        }
-        else
-        {
-            /*
-                Size of ERROR
-            */
-            // std::cout << "ERROR" << std::endl;
-            this->minimalWidth = 5;
+            this->minimalWidth = utility::getNumberOfCharactersInDouble(
+                this->value.value());
         }
         isCalculated = true;
     }
@@ -95,4 +89,11 @@ void FormulaValue::nullify()
     this->firstPart->nullify();
     this->secondPart->nullify();
 }
-size_t FormulaValue::getMinimalWidth() const { return minimalWidth; }
+size_t FormulaValue::getMinimalWidth() const
+{
+    if (!this->value.has_value())
+    {
+        return 5;
+    }
+    return minimalWidth;
+}

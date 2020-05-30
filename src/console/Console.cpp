@@ -1,5 +1,6 @@
 #include "Console.h"
 #include <iostream>
+#include "../utilities/Utility.h"
 
 Console::Command Console::readCommand()
 {
@@ -11,11 +12,11 @@ Console::Command Console::readCommand()
         firstSpaceIndex == command.size() - 1 ||
         firstSpaceIndex == 0)
     {
-        return Command(command, std::nullopt);
+        return Command(utility::trim(command), std::nullopt);
     }
     else
     {
-        return Command(command.substr(0, firstSpaceIndex),
-                       command.substr(firstSpaceIndex + 1));
+        return Command(utility::trim(command.substr(0, firstSpaceIndex)),
+                       utility::trim(command.substr(firstSpaceIndex + 1)));
     }
 }

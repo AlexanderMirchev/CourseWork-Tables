@@ -27,5 +27,7 @@ public:
     */
     void editCell(const size_t &row, const size_t &col,
                   const std::string &newValue);
+private:
+    void updateColumns(const std::vector<size_t>& columns);
 };
 #endif

@@ -2,6 +2,7 @@
 #define UTILITY_H
 
 #include <string>
+#include <vector>
 
 /*
     Namespace for utility methods
@@ -14,8 +15,22 @@ namespace utility
     std::string trim(const std::string &);
 
     /*
-        Return
+
     */
     size_t getNumberOfCharactersInDouble(const double &);
+
+    template <class T>
+    void uniquePushBack(std::vector<T> &list, const T &newObj)
+    {
+        for (const T &obj : list)
+        {
+            if (obj == newObj)
+            {
+                return;
+            }
+        }
+        list.push_back(newObj);
+    }
+
 } // namespace utility
 #endif

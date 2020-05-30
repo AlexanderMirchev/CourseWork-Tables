@@ -4,6 +4,7 @@
 #include "file-controller/FileController.h"
 #include "table-controller/TableController.h"
 #include "console/Console.h"
+#include <functional>
 
 /*
     Class that connects controllers and console
@@ -22,7 +23,20 @@ public:
         Start reading user input and executing commands if available
     */
     void start();
+
 private:
+    void open(const std::string &);
+    void close();
+    void save() const;
+    void saveas(const std::string &);
+    void print() const;
+    void edit(const std::string &);
+
+    void execute(const char *commandLabel,
+                 const std::function<void()> &commandBody);
+    void execute(const char *commandLabel,
+                 const std::function<void()> &commandBody) const;
+
     static const std::string HELP_MESSAGE;
 };
 #endif

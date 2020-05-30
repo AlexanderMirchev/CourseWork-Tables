@@ -3,12 +3,13 @@
 #include "../utilities/Validation.h"
 #include "../utilities/Utility.h"
 
+#include "../exceptions/Exceptions.cpp"
+
 #include "DoubleValue.h"
 #include "FormulaValue.h"
 #include "IntegerValue.h"
 #include "ReferenceValue.h"
 #include "StringValue.h"
-#include <iostream>
 
 std::shared_ptr<Cell> CellFactory::make(
     const std::string &input, const size_t &row, const size_t &col)
@@ -20,10 +21,15 @@ std::shared_ptr<Cell> CellFactory::make(
     }
     else
     {
-        return std::shared_ptr<Cell>(new Cell(str, makeValue(str), row, col));
+        try
+        {
+            return std::shared_ptr<Cell>(new Cell(str, makeValue(str), row, col));
+        }
+        catch (const std::invalid_argument &e)
+        {
+            throw UnknownDataType(row, col, str.c_str());
+        }
     }
-
-    throw 20;
 }
 
 std::shared_ptr<CellValue> CellFactory::makeValue(const std::string &str)
@@ -53,7 +59,7 @@ std::shared_ptr<CellValue> CellFactory::makeValue(const std::string &str)
     {
         return std::shared_ptr<CellValue>(new DoubleValue(str));
     }
-    throw 20;
+    throw std::invalid_argument(str);
 }
 
 std::shared_ptr<CellValue> CellFactory::createFormula(const std::string &fullStr)
