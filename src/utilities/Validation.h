@@ -3,48 +3,51 @@
 
 #include <string>
 
-/*
-    Namespace for validation methods
+/**
+ * Namespace for validation methods
 */
 namespace validation
 {
-    /*
-        +/-/number - first character
-        number - other characters
+    /**
+     * +/-/number - first character
+     * number - other characters
     */
     bool isValidInteger(const std::string&);
     
-    /*
-        +/-/number - first character
-        number/'.' - other characters
-        no more than 1 '.'
+    /**
+     * +/-/number - first character
+     * number/'.' - other characters
+     * no more than 1 '.' 
     */
     bool isValidDouble(const std::string&);
 
-    /*
-        R<positive integer>C<positive integer>
+    /**
+     * R<positive integer>C<positive integer>
     */
     bool isValidReference(const std::string&);
 
-    /*
-        '"' - first and last characters
+    /**
+     * '"' - first and last characters
     */
     bool isValidString(const std::string&);
 
-    /*
-        '=' - first character
+    /**
+     * '=' - first character
     */
     bool isValidFormula(const std::string&);
 
+    /**
+     * 0-9
+    */
     bool isNumber(const char&);
 
-    /*
-        +,-,*,/,^
+    /**
+     * +,-,*,/,^
     */
     bool isOperation(const char&);
 
-    /*
-        +,-,number
+    /**
+     * +,-,number
     */
     bool isValidFirstCharInNumber(const char&);
 }

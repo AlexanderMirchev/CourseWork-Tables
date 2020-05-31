@@ -27,7 +27,7 @@ void TableController::removeTable()
     {
         throw NoSource();
     }
-    this->table = std::nullopt;
+    this->table.reset();
 }
 
 void TableController::printTable() const

@@ -1,0 +1,21 @@
+digraph "CustomException"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="CustomException",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 [label="std::exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="CannotCreateTable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dc7/classCannotCreateTable.html"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="CreatedCircularDependency",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d99/structCreatedCircularDependency.html"];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="InvalidReference",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/d83/structInvalidReference.html"];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="NoSource",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6b/structNoSource.html"];
+  Node0 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="SourceAlreadyExists",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d51/structSourceAlreadyExists.html"];
+  Node0 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="UnknownDataType",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d92/classUnknownDataType.html"];
+}

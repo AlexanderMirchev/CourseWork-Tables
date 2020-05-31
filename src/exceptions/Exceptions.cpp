@@ -5,15 +5,21 @@
 #include <string>
 #include <cstring>
 
+/**
+ * Custom exception class
+*/
 struct CustomException : public std::exception
 {
     virtual const char *what() const noexcept = 0;
 };
 
+/**
+ * Exception for notifying about unsupported data types
+*/
 class UnknownDataType : public CustomException
 {
 private:
-    char message[50];
+    char message[80];
 
 public:
     UnknownDataType() = delete;
@@ -30,10 +36,13 @@ public:
     }
 };
 
+/**
+ * Exception for when an error has occured while creating table
+*/
 class CannotCreateTable : public CustomException
 {
 private:
-    char message[75];
+    char message[180];
 
 public:
     CannotCreateTable() = delete;
@@ -49,6 +58,9 @@ public:
     }
 };
 
+/**
+ * Exception for notifying that a source cannot be set if is present
+*/
 struct SourceAlreadyExists : public CustomException
 {
     const char *what() const throw() override
@@ -57,6 +69,9 @@ struct SourceAlreadyExists : public CustomException
     }
 };
 
+/**
+ * Exception for notifying missing source
+*/
 struct NoSource : public CustomException
 {
     const char *what() const throw() override
@@ -65,11 +80,25 @@ struct NoSource : public CustomException
     }
 };
 
+/**
+ * Exception for when a reference does not have valid syntax
+*/
 struct InvalidReference : public CustomException
 {
     const char *what() const throw() override
     {
         return "Reference is invalid.";
+    }
+};
+
+/**
+ * Exception for notifying the creation of circular dependency between cells
+*/
+struct CreatedCircularDependency : public CustomException
+{
+    const char *what() const throw() override
+    {
+        return "Formula has created circular dependency.";
     }
 };
 #endif

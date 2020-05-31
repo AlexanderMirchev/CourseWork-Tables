@@ -1,0 +1,101 @@
+\hypertarget{classCell}{}\section{Cell Class Reference}
+\label{classCell}\index{Cell@{Cell}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCell_a9c5b60161f594fa75a90024ccd097cef}\label{classCell_a9c5b60161f594fa75a90024ccd097cef}} 
+{\bfseries Cell} (const std\+::string \&, const std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ \&, const size\+\_\+t \&, const size\+\_\+t \&)
+\item 
+const std\+::string \& \hyperlink{classCell_a1023dbb5f0feb3990f9c8742a53d42d5}{get\+Base\+Value} () const
+\item 
+void \hyperlink{classCell_afceadbac4f71834ee2c0add80a3c36fb}{add\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&)
+\item 
+void \hyperlink{classCell_a7515c31e889acf8147b739a390b04f56}{remove\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&)
+\item 
+void \hyperlink{classCell_a27872e2747e4a5ba9cce8c7e2c8cfb68}{set\+Value} (const std\+::string \&, const std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ \&)
+\item 
+void \hyperlink{classCell_a0265c2967d02fd1b211728f520f73d42}{print} () const
+\item 
+double \hyperlink{classCell_a8c28bb1ce92cce3c2440ef1484316e65}{get\+Double\+Value} () const
+\item 
+void \hyperlink{classCell_acfa77320d94a5897030a9113d6d9cc7e}{update\+Cell} (\hyperlink{classTable}{Table} \&, const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&start\+Cell, std\+::vector$<$ size\+\_\+t $>$ \&updated\+Columns)
+\item 
+void \hyperlink{classCell_a4fb8248ff66f84e93d72b4c57a8e0e5a}{prepare\+Cell} (\hyperlink{classTable}{Table} \&)
+\item 
+void \hyperlink{classCell_a7656cf97851d5647e9714c482252801c}{remove\+Dependencies} (\hyperlink{classTable}{Table} \&)
+\item 
+size\+\_\+t \hyperlink{classCell_ace29a526d062529ece27df47b2e11461}{get\+Content\+Width} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCell_afceadbac4f71834ee2c0add80a3c36fb}\label{classCell_afceadbac4f71834ee2c0add80a3c36fb}} 
+\index{Cell@{Cell}!add\+Dependant\+Cell@{add\+Dependant\+Cell}}
+\index{add\+Dependant\+Cell@{add\+Dependant\+Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{add\+Dependant\+Cell()}{addDependantCell()}}
+{\footnotesize\ttfamily void Cell\+::add\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{new\+Cell }\end{DoxyParamCaption})}
+
+Adds a cell to the list of cells that contain a reference to this cell(and therefore should change when this cell is edited)
+
+Example\+: Cell1 has Cell2 as dependant cell Cell1 changes -\/$>$ Cell2 changes \mbox{\Hypertarget{classCell_a1023dbb5f0feb3990f9c8742a53d42d5}\label{classCell_a1023dbb5f0feb3990f9c8742a53d42d5}} 
+\index{Cell@{Cell}!get\+Base\+Value@{get\+Base\+Value}}
+\index{get\+Base\+Value@{get\+Base\+Value}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{get\+Base\+Value()}{getBaseValue()}}
+{\footnotesize\ttfamily const std\+::string \& Cell\+::get\+Base\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns the value from which it\textquotesingle{}s been created \mbox{\Hypertarget{classCell_ace29a526d062529ece27df47b2e11461}\label{classCell_ace29a526d062529ece27df47b2e11461}} 
+\index{Cell@{Cell}!get\+Content\+Width@{get\+Content\+Width}}
+\index{get\+Content\+Width@{get\+Content\+Width}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{get\+Content\+Width()}{getContentWidth()}}
+{\footnotesize\ttfamily size\+\_\+t Cell\+::get\+Content\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns the width of the contents in the cell \mbox{\Hypertarget{classCell_a8c28bb1ce92cce3c2440ef1484316e65}\label{classCell_a8c28bb1ce92cce3c2440ef1484316e65}} 
+\index{Cell@{Cell}!get\+Double\+Value@{get\+Double\+Value}}
+\index{get\+Double\+Value@{get\+Double\+Value}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{get\+Double\+Value()}{getDoubleValue()}}
+{\footnotesize\ttfamily double Cell\+::get\+Double\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns the double value of the content in the cell \mbox{\Hypertarget{classCell_a4fb8248ff66f84e93d72b4c57a8e0e5a}\label{classCell_a4fb8248ff66f84e93d72b4c57a8e0e5a}} 
+\index{Cell@{Cell}!prepare\+Cell@{prepare\+Cell}}
+\index{prepare\+Cell@{prepare\+Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{prepare\+Cell()}{prepareCell()}}
+{\footnotesize\ttfamily void Cell\+::prepare\+Cell (\begin{DoxyParamCaption}\item[{\hyperlink{classTable}{Table} \&}]{table }\end{DoxyParamCaption})}
+
+Calculates and links the cell \mbox{\Hypertarget{classCell_a0265c2967d02fd1b211728f520f73d42}\label{classCell_a0265c2967d02fd1b211728f520f73d42}} 
+\index{Cell@{Cell}!print@{print}}
+\index{print@{print}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Cell\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Outputs the value of the cell \mbox{\Hypertarget{classCell_a7515c31e889acf8147b739a390b04f56}\label{classCell_a7515c31e889acf8147b739a390b04f56}} 
+\index{Cell@{Cell}!remove\+Dependant\+Cell@{remove\+Dependant\+Cell}}
+\index{remove\+Dependant\+Cell@{remove\+Dependant\+Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{remove\+Dependant\+Cell()}{removeDependantCell()}}
+{\footnotesize\ttfamily void Cell\+::remove\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{cell }\end{DoxyParamCaption})}
+
+Removes a cell from the list of dependant cells \mbox{\Hypertarget{classCell_a7656cf97851d5647e9714c482252801c}\label{classCell_a7656cf97851d5647e9714c482252801c}} 
+\index{Cell@{Cell}!remove\+Dependencies@{remove\+Dependencies}}
+\index{remove\+Dependencies@{remove\+Dependencies}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{remove\+Dependencies()}{removeDependencies()}}
+{\footnotesize\ttfamily void Cell\+::remove\+Dependencies (\begin{DoxyParamCaption}\item[{\hyperlink{classTable}{Table} \&}]{table }\end{DoxyParamCaption})}
+
+Remove this cell from all cells that have this cell as dependant \mbox{\Hypertarget{classCell_a27872e2747e4a5ba9cce8c7e2c8cfb68}\label{classCell_a27872e2747e4a5ba9cce8c7e2c8cfb68}} 
+\index{Cell@{Cell}!set\+Value@{set\+Value}}
+\index{set\+Value@{set\+Value}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{set\+Value()}{setValue()}}
+{\footnotesize\ttfamily void Cell\+::set\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ \&}]{new\+Value }\end{DoxyParamCaption})}
+
+Sets the value of the cell \mbox{\Hypertarget{classCell_acfa77320d94a5897030a9113d6d9cc7e}\label{classCell_acfa77320d94a5897030a9113d6d9cc7e}} 
+\index{Cell@{Cell}!update\+Cell@{update\+Cell}}
+\index{update\+Cell@{update\+Cell}!Cell@{Cell}}
+\subsubsection{\texorpdfstring{update\+Cell()}{updateCell()}}
+{\footnotesize\ttfamily void Cell\+::update\+Cell (\begin{DoxyParamCaption}\item[{\hyperlink{classTable}{Table} \&}]{table,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{start\+Cell,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{updated\+Columns }\end{DoxyParamCaption})}
+
+Updates the cell and it\textquotesingle{}s dependant cells Start\+Cell is for detecting whether a loop is caused in updating dependant cells
+
+Throw \hyperlink{structCreatedCircularDependency}{Created\+Circular\+Dependency} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/cells/Cell.\+h\item 
+Project-\/\+Tables/src/cells/Cell.\+cpp\end{DoxyCompactItemize}

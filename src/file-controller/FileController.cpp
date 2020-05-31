@@ -21,7 +21,7 @@ void FileController::open(const std::string &filename, Table &table)
     {
         fetch(table);
     }
-    catch (const std::exception &e)
+    catch (const CannotCreateTable &e)
     {
         this->serializer = nullptr;
         throw e;

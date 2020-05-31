@@ -1,0 +1,118 @@
+\hypertarget{classIntegerValue}{}\section{Integer\+Value Class Reference}
+\label{classIntegerValue}\index{Integer\+Value@{Integer\+Value}}
+
+
+{\ttfamily \#include $<$Integer\+Value.\+h$>$}
+
+
+
+Inheritance diagram for Integer\+Value\+:
+% FIG 0
+
+
+Collaboration diagram for Integer\+Value\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIntegerValue_a1678b0dfd635f3f0957f74d8a6448340}\label{classIntegerValue_a1678b0dfd635f3f0957f74d8a6448340}} 
+{\bfseries Integer\+Value} (const std\+::string \&)
+\item 
+void \hyperlink{classIntegerValue_a3cf6394dee28b404446eff2c6b727634}{print} () const override
+\item 
+double \hyperlink{classIntegerValue_aafc02b663f92364a94ce69b796301730}{get\+Double\+Value} () const override
+\item 
+void \hyperlink{classIntegerValue_a00b35d20cf466e13c83feda8d782d0a4}{calculate\+Value} (\hyperlink{classTable}{Table} \&) override
+\item 
+void \hyperlink{classIntegerValue_a3bd7ab4408d25b74225931d89f62ac8b}{set\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&, \hyperlink{classTable}{Table} \&) const override
+\item 
+void \hyperlink{classIntegerValue_a093c194fb370dac25a867980bc4a4eca}{remove\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&, \hyperlink{classTable}{Table} \&) const override
+\item 
+void \hyperlink{classIntegerValue_a6232180f3447a08a204612dfa9543631}{nullify} () override
+\item 
+size\+\_\+t \hyperlink{classIntegerValue_ac16c4b202cc48d96e9b1aa0137be7239}{get\+Minimal\+Width} () const override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Static cell containing integer value 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classIntegerValue_a00b35d20cf466e13c83feda8d782d0a4}\label{classIntegerValue_a00b35d20cf466e13c83feda8d782d0a4}} 
+\index{Integer\+Value@{Integer\+Value}!calculate\+Value@{calculate\+Value}}
+\index{calculate\+Value@{calculate\+Value}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{calculate\+Value()}{calculateValue()}}
+{\footnotesize\ttfamily void Integer\+Value\+::calculate\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Calculates the value of the cell (if there is anything to calculate) 
+
+Implements \hyperlink{classCellValue_ab644256decf3608ed50e389ead6cf611}{Cell\+Value}.
+
+\mbox{\Hypertarget{classIntegerValue_aafc02b663f92364a94ce69b796301730}\label{classIntegerValue_aafc02b663f92364a94ce69b796301730}} 
+\index{Integer\+Value@{Integer\+Value}!get\+Double\+Value@{get\+Double\+Value}}
+\index{get\+Double\+Value@{get\+Double\+Value}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{get\+Double\+Value()}{getDoubleValue()}}
+{\footnotesize\ttfamily double Integer\+Value\+::get\+Double\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the value of the cell used for formulas
+
+Throws std\+::bad\+\_\+optional\+\_\+access (on dynamic cells) 
+
+Implements \hyperlink{classCellValue_a3d2850b3a8473050fd46f486a29ed5bf}{Cell\+Value}.
+
+\mbox{\Hypertarget{classIntegerValue_ac16c4b202cc48d96e9b1aa0137be7239}\label{classIntegerValue_ac16c4b202cc48d96e9b1aa0137be7239}} 
+\index{Integer\+Value@{Integer\+Value}!get\+Minimal\+Width@{get\+Minimal\+Width}}
+\index{get\+Minimal\+Width@{get\+Minimal\+Width}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{get\+Minimal\+Width()}{getMinimalWidth()}}
+{\footnotesize\ttfamily size\+\_\+t Integer\+Value\+::get\+Minimal\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the minimal width of the cell 
+
+Implements \hyperlink{classCellValue_ad96473ba3dd88b83da96c03ae31a2ede}{Cell\+Value}.
+
+\mbox{\Hypertarget{classIntegerValue_a6232180f3447a08a204612dfa9543631}\label{classIntegerValue_a6232180f3447a08a204612dfa9543631}} 
+\index{Integer\+Value@{Integer\+Value}!nullify@{nullify}}
+\index{nullify@{nullify}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{nullify()}{nullify()}}
+{\footnotesize\ttfamily void Integer\+Value\+::nullify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Resets the value without changing the syntax (if contains reference) 
+
+Implements \hyperlink{classCellValue_af4f30a4b36e159f2f2bfc7ed83f1b37a}{Cell\+Value}.
+
+\mbox{\Hypertarget{classIntegerValue_a3cf6394dee28b404446eff2c6b727634}\label{classIntegerValue_a3cf6394dee28b404446eff2c6b727634}} 
+\index{Integer\+Value@{Integer\+Value}!print@{print}}
+\index{print@{print}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Integer\+Value\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Prints the value of the cell 
+
+Implements \hyperlink{classCellValue_a12d1cf68a5ba83f0c375441729772742}{Cell\+Value}.
+
+\mbox{\Hypertarget{classIntegerValue_a093c194fb370dac25a867980bc4a4eca}\label{classIntegerValue_a093c194fb370dac25a867980bc4a4eca}} 
+\index{Integer\+Value@{Integer\+Value}!remove\+Dependant\+Cell@{remove\+Dependant\+Cell}}
+\index{remove\+Dependant\+Cell@{remove\+Dependant\+Cell}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{remove\+Dependant\+Cell()}{removeDependantCell()}}
+{\footnotesize\ttfamily void Integer\+Value\+::remove\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{,  }\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Removes dependant cell to the cell value (if contains reference) 
+
+Implements \hyperlink{classCellValue_a72b4390db6c53e525550cefade66fb0e}{Cell\+Value}.
+
+\mbox{\Hypertarget{classIntegerValue_a3bd7ab4408d25b74225931d89f62ac8b}\label{classIntegerValue_a3bd7ab4408d25b74225931d89f62ac8b}} 
+\index{Integer\+Value@{Integer\+Value}!set\+Dependant\+Cell@{set\+Dependant\+Cell}}
+\index{set\+Dependant\+Cell@{set\+Dependant\+Cell}!Integer\+Value@{Integer\+Value}}
+\subsubsection{\texorpdfstring{set\+Dependant\+Cell()}{setDependantCell()}}
+{\footnotesize\ttfamily void Integer\+Value\+::set\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{,  }\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Sets a dependant cell to the cell value (if contains a reference to another cell) 
+
+Implements \hyperlink{classCellValue_ad2437fb3d4d4a96d9a76c857b3d04231}{Cell\+Value}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/cells/Integer\+Value.\+h\item 
+Project-\/\+Tables/src/cells/Integer\+Value.\+cpp\end{DoxyCompactItemize}

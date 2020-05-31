@@ -5,8 +5,8 @@
 
 #include "../table/Table.h"
 
-/*
-    Class for serialization/deserialization
+/**
+ * Class for serialization/deserialization of tables
 */
 class TableSerializer
 {
@@ -16,11 +16,16 @@ private:
 public:
     TableSerializer(const std::string &filename);
 
-    /*
-        Throws CannotCreateTable
+    /**
+     * Deserializes table from file
+     * 
+     * Throws CannotCreateTable
     */
     void deserializeTable(Table &) const;
 
+    /**
+     * Serializes table to file
+    */
     void serializeTable(const Table &) const;
 };
 #endif

@@ -6,8 +6,8 @@
 #include "console/Console.h"
 #include <functional>
 
-/*
-    Class that connects controllers and console
+/**
+ * Class that connects controllers and console 
 */
 class Session
 {
@@ -19,8 +19,8 @@ public:
     Session() = default;
     ~Session() = default;
 
-    /*
-        Start reading user input and executing commands if available
+    /**
+     * Start reading user input and executing commands if available
     */
     void start();
 
@@ -32,6 +32,9 @@ private:
     void print() const;
     void edit(const std::string &);
 
+    /**
+     * Executing and absorbing exceptions
+    */
     void execute(const char *commandLabel,
                  const std::function<void()> &commandBody);
     void execute(const char *commandLabel,

@@ -3,6 +3,9 @@
 
 #include "CellValue.h"
 
+/**
+ * Static cell containig double value
+*/
 class DoubleValue : public CellValue
 {
 private:

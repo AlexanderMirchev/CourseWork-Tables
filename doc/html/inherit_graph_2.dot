@@ -1,0 +1,17 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="CellValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d63/classCellValue.html"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="DoubleValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d9d/classDoubleValue.html"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="FormulaValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d38/classFormulaValue.html"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="IntegerValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/de7/classIntegerValue.html"];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ReferenceValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/df7/classReferenceValue.html"];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="StringValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d6a/classStringValue.html"];
+}

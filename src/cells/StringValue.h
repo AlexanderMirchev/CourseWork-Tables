@@ -4,6 +4,9 @@
 #include "CellValue.h"
 #include <optional>
 
+/**
+ * Static cell containing string value
+*/
 class StringValue : public CellValue
 {
 private:

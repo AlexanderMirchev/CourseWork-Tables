@@ -7,7 +7,7 @@ FormulaValue::FormulaValue(const std::shared_ptr<CellValue> &firstPart,
                            const std::shared_ptr<CellValue> &secondPart,
                            const char &operation)
     : firstPart{firstPart}, secondPart{secondPart},
-      operation{operation}, minimalWidth{0} {}
+      operation{operation}, minimalWidth{0}, isCalculated{false} {}
 double FormulaValue::getDoubleValue() const { return value.value(); }
 void FormulaValue::calculateValue(Table &table)
 {
@@ -34,7 +34,7 @@ void FormulaValue::calculateValue(Table &table)
             {
                 if (this->secondPart->getDoubleValue() == 0)
                 {
-                    this->value = std::nullopt;
+                    this->value.reset();
                 }
                 else
                 {
@@ -48,7 +48,7 @@ void FormulaValue::calculateValue(Table &table)
         }
         catch (const std::bad_optional_access &e)
         {
-            this->value = std::nullopt;
+            this->value.reset();
         }
         if (this->value.has_value())
         {

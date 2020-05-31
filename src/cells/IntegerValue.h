@@ -3,6 +3,9 @@
 
 #include "CellValue.h"
 
+/**
+ * Static cell containing integer value
+*/
 class IntegerValue : public CellValue
 {
 private:

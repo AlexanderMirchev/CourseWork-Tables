@@ -33,7 +33,7 @@ void ReferenceValue::calculateValue(Table &table)
             }
             catch (const std::exception &e)
             {
-                this->value = std::nullopt;
+                this->value.reset();
             }
         }
         if (this->value.has_value())

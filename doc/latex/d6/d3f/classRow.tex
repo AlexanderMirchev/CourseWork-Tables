@@ -1,0 +1,46 @@
+\hypertarget{classRow}{}\section{Row Class Reference}
+\label{classRow}\index{Row@{Row}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \hyperlink{classRow_a17898a404936d1af41aebee87d5bce7a}{size} () const
+\item 
+void \hyperlink{classRow_a8b22fb69f506e4d7d5c283b5260a1462}{push\+\_\+back} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&)
+\item 
+const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \hyperlink{classRow_ace663a04406f7283a1b7a2008dd6d131}{operator\mbox{[}$\,$\mbox{]}} (const size\+\_\+t \&col) const
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \& \hyperlink{classRow_a66a6bfcb670082c16ca936db49705339}{operator\mbox{[}$\,$\mbox{]}} (const size\+\_\+t \&col)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRow_ace663a04406f7283a1b7a2008dd6d131}\label{classRow_ace663a04406f7283a1b7a2008dd6d131}} 
+\index{Row@{Row}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Row@{Row}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ Row\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{col }\end{DoxyParamCaption}) const}
+
+Returns shared pointer to cell with index col Returns nullptr if cell is empty(and has no dependencies) \mbox{\Hypertarget{classRow_a66a6bfcb670082c16ca936db49705339}\label{classRow_a66a6bfcb670082c16ca936db49705339}} 
+\index{Row@{Row}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Row@{Row}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \& Row\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{col }\end{DoxyParamCaption})}
+
+Returns shared pointer to cell (modifiable) and adds empty cells if not in range \mbox{\Hypertarget{classRow_a8b22fb69f506e4d7d5c283b5260a1462}\label{classRow_a8b22fb69f506e4d7d5c283b5260a1462}} 
+\index{Row@{Row}!push\+\_\+back@{push\+\_\+back}}
+\index{push\+\_\+back@{push\+\_\+back}!Row@{Row}}
+\subsubsection{\texorpdfstring{push\+\_\+back()}{push\_back()}}
+{\footnotesize\ttfamily void Row\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{cell }\end{DoxyParamCaption})}
+
+Adds cell to end of row \mbox{\Hypertarget{classRow_a17898a404936d1af41aebee87d5bce7a}\label{classRow_a17898a404936d1af41aebee87d5bce7a}} 
+\index{Row@{Row}!size@{size}}
+\index{size@{size}!Row@{Row}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t Row\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns size of row(from first cell to last non-\/empty) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/table/Row.\+h\item 
+Project-\/\+Tables/src/table/Row.\+cpp\end{DoxyCompactItemize}

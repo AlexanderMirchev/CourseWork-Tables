@@ -1,0 +1,76 @@
+\hypertarget{namespacevalidation}{}\section{validation Namespace Reference}
+\label{namespacevalidation}\index{validation@{validation}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespacevalidation_a79d16e6b2fb9f26b308ba873d5c1f4ba}{is\+Valid\+Integer} (const std\+::string \&)
+\item 
+bool \hyperlink{namespacevalidation_ac6510b1b11ad2a41bdacf9164db9171a}{is\+Valid\+Double} (const std\+::string \&)
+\item 
+bool \hyperlink{namespacevalidation_a41c7f7672cfab0b1386e64e9c30aae72}{is\+Valid\+Reference} (const std\+::string \&)
+\item 
+bool \hyperlink{namespacevalidation_a651f07800d4dfd07e28ea5b6fb988bf6}{is\+Valid\+String} (const std\+::string \&)
+\item 
+bool \hyperlink{namespacevalidation_a3a4eed4024e7f1c319fe999751026392}{is\+Valid\+Formula} (const std\+::string \&)
+\item 
+bool \hyperlink{namespacevalidation_a3ee8771a2538dfb539ddde16854b8674}{is\+Number} (const char \&)
+\item 
+bool \hyperlink{namespacevalidation_ac9fec2335861325c9e7c0c7b5a2f868d}{is\+Operation} (const char \&)
+\item 
+bool \hyperlink{namespacevalidation_acc02b07e5822ad974d205771eddf50b5}{is\+Valid\+First\+Char\+In\+Number} (const char \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for validation methods 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacevalidation_a3ee8771a2538dfb539ddde16854b8674}\label{namespacevalidation_a3ee8771a2538dfb539ddde16854b8674}} 
+\index{validation@{validation}!is\+Number@{is\+Number}}
+\index{is\+Number@{is\+Number}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Number()}{isNumber()}}
+{\footnotesize\ttfamily bool validation\+::is\+Number (\begin{DoxyParamCaption}\item[{const char \&}]{c }\end{DoxyParamCaption})}
+
+0-\/9 \mbox{\Hypertarget{namespacevalidation_ac9fec2335861325c9e7c0c7b5a2f868d}\label{namespacevalidation_ac9fec2335861325c9e7c0c7b5a2f868d}} 
+\index{validation@{validation}!is\+Operation@{is\+Operation}}
+\index{is\+Operation@{is\+Operation}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Operation()}{isOperation()}}
+{\footnotesize\ttfamily bool validation\+::is\+Operation (\begin{DoxyParamCaption}\item[{const char \&}]{c }\end{DoxyParamCaption})}
+
++,-\/,$\ast$,/,$^\wedge$ \mbox{\Hypertarget{namespacevalidation_ac6510b1b11ad2a41bdacf9164db9171a}\label{namespacevalidation_ac6510b1b11ad2a41bdacf9164db9171a}} 
+\index{validation@{validation}!is\+Valid\+Double@{is\+Valid\+Double}}
+\index{is\+Valid\+Double@{is\+Valid\+Double}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Valid\+Double()}{isValidDouble()}}
+{\footnotesize\ttfamily bool validation\+::is\+Valid\+Double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
++/-\//number -\/ first character number/\textquotesingle{}.\textquotesingle{} -\/ other characters no more than 1 \textquotesingle{}.\textquotesingle{} \mbox{\Hypertarget{namespacevalidation_acc02b07e5822ad974d205771eddf50b5}\label{namespacevalidation_acc02b07e5822ad974d205771eddf50b5}} 
+\index{validation@{validation}!is\+Valid\+First\+Char\+In\+Number@{is\+Valid\+First\+Char\+In\+Number}}
+\index{is\+Valid\+First\+Char\+In\+Number@{is\+Valid\+First\+Char\+In\+Number}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Valid\+First\+Char\+In\+Number()}{isValidFirstCharInNumber()}}
+{\footnotesize\ttfamily bool validation\+::is\+Valid\+First\+Char\+In\+Number (\begin{DoxyParamCaption}\item[{const char \&}]{c }\end{DoxyParamCaption})}
+
++,-\/,number \mbox{\Hypertarget{namespacevalidation_a3a4eed4024e7f1c319fe999751026392}\label{namespacevalidation_a3a4eed4024e7f1c319fe999751026392}} 
+\index{validation@{validation}!is\+Valid\+Formula@{is\+Valid\+Formula}}
+\index{is\+Valid\+Formula@{is\+Valid\+Formula}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Valid\+Formula()}{isValidFormula()}}
+{\footnotesize\ttfamily bool validation\+::is\+Valid\+Formula (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+\textquotesingle{}=\textquotesingle{} -\/ first character \mbox{\Hypertarget{namespacevalidation_a79d16e6b2fb9f26b308ba873d5c1f4ba}\label{namespacevalidation_a79d16e6b2fb9f26b308ba873d5c1f4ba}} 
+\index{validation@{validation}!is\+Valid\+Integer@{is\+Valid\+Integer}}
+\index{is\+Valid\+Integer@{is\+Valid\+Integer}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Valid\+Integer()}{isValidInteger()}}
+{\footnotesize\ttfamily bool validation\+::is\+Valid\+Integer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
++/-\//number -\/ first character number -\/ other characters \mbox{\Hypertarget{namespacevalidation_a41c7f7672cfab0b1386e64e9c30aae72}\label{namespacevalidation_a41c7f7672cfab0b1386e64e9c30aae72}} 
+\index{validation@{validation}!is\+Valid\+Reference@{is\+Valid\+Reference}}
+\index{is\+Valid\+Reference@{is\+Valid\+Reference}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Valid\+Reference()}{isValidReference()}}
+{\footnotesize\ttfamily bool validation\+::is\+Valid\+Reference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+R$<$positive integer$>$C$<$positive integer$>$ \mbox{\Hypertarget{namespacevalidation_a651f07800d4dfd07e28ea5b6fb988bf6}\label{namespacevalidation_a651f07800d4dfd07e28ea5b6fb988bf6}} 
+\index{validation@{validation}!is\+Valid\+String@{is\+Valid\+String}}
+\index{is\+Valid\+String@{is\+Valid\+String}!validation@{validation}}
+\subsubsection{\texorpdfstring{is\+Valid\+String()}{isValidString()}}
+{\footnotesize\ttfamily bool validation\+::is\+Valid\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+\textquotesingle{}\char`\"{}\textquotesingle{} -\/ first and last characters 

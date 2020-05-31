@@ -1,0 +1,41 @@
+\hypertarget{classCellFactory}{}\section{Cell\+Factory Class Reference}
+\label{classCellFactory}\index{Cell\+Factory@{Cell\+Factory}}
+
+
+{\ttfamily \#include $<$Cell\+Factory.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \hyperlink{classCellFactory_a40b3d3a3e2250f90b45d490f21d4374b}{make} (const std\+::string \&, const size\+\_\+t \&row, const size\+\_\+t \&col)
+\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ \hyperlink{classCellFactory_af112ed8e49626db7d872db0d75409aa3}{make\+Value} (const std\+::string \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Factory class for cells 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCellFactory_a40b3d3a3e2250f90b45d490f21d4374b}\label{classCellFactory_a40b3d3a3e2250f90b45d490f21d4374b}} 
+\index{Cell\+Factory@{Cell\+Factory}!make@{make}}
+\index{make@{make}!Cell\+Factory@{Cell\+Factory}}
+\subsubsection{\texorpdfstring{make()}{make()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ Cell\+Factory\+::make (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input,  }\item[{const size\+\_\+t \&}]{row,  }\item[{const size\+\_\+t \&}]{col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates a shared pointer to a cell If string is empty will produce nullptr
+
+Throws \hyperlink{classUnknownDataType}{Unknown\+Data\+Type} if can does not satisfy any cell conditions \mbox{\Hypertarget{classCellFactory_af112ed8e49626db7d872db0d75409aa3}\label{classCellFactory_af112ed8e49626db7d872db0d75409aa3}} 
+\index{Cell\+Factory@{Cell\+Factory}!make\+Value@{make\+Value}}
+\index{make\+Value@{make\+Value}!Cell\+Factory@{Cell\+Factory}}
+\subsubsection{\texorpdfstring{make\+Value()}{makeValue()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ Cell\+Factory\+::make\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates a shared pointer to a cell content value If string is empty will produce nullptr
+
+Throws std\+::invalid\+\_\+argument if string cannot be converted to value 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/cells/Cell\+Factory.\+h\item 
+Project-\/\+Tables/src/cells/Cell\+Factory.\+cpp\end{DoxyCompactItemize}

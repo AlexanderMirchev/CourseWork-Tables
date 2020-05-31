@@ -4,8 +4,8 @@
 #include "TableSerializer.h"
 #include "../table/Table.h"
 
-/*
-    Controller class for interraction with files
+/**
+ * Controller class for interraction with files
 */
 class FileController
 {
@@ -16,27 +16,31 @@ public:
     FileController();
     ~FileController();
 
-    /*
-        Opens file and deserializes table form it
-        Throws SourceAlreadyExists
+    /**
+     * Opens file and deserializes table form it
+     * 
+     * Throws SourceAlreadyExists
     */
     void open(const std::string &filename, Table &);
 
-    /*
-        Closes file
-        Throws NoSource
+    /**
+     * Closes file
+     * 
+     * Throws NoSource
     */
     void close();
 
-    /*
-        Saves table to current open file
-        Throws NoSource
+    /**
+     * Saves table to current open file
+     * 
+     * Throws NoSource
     */
     void save(const Table &) const;
 
-    /*
-        Opens new file(newFileName) and serializes table
-        Throws NoSource
+    /**
+     * Opens new file(newFileName) and serializes table
+     * 
+     * Throws NoSource
     */
     void saveas(const std::string &newFileName, const Table &);
 

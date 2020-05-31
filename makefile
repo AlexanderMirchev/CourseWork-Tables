@@ -6,7 +6,7 @@
 # Files/directories used/created in compilation process
 
 # output binary file
-BIN := table.out
+BIN := table.exe
 
 # source directory
 SRCDIR := src
@@ -55,6 +55,7 @@ all: $(BIN)
 .PHONY: clean
 clean:
 	rm -f -r $(OBJDIR)
+	rm -f $(BIN)
 
 # Links all object files into the binary
 $(BIN): $(OBJS)

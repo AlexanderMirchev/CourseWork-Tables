@@ -1,0 +1,65 @@
+\hypertarget{classTable}{}\section{Table Class Reference}
+\label{classTable}\index{Table@{Table}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTable_a80c70bde6e2466bd31de1c3828fb3c13}\label{classTable_a80c70bde6e2466bd31de1c3828fb3c13}} 
+size\+\_\+t {\bfseries number\+Of\+Rows} () const
+\item 
+void \hyperlink{classTable_a5033ca5270ef016fef222fd3d01ca869}{consider\+Width} (const size\+\_\+t \&, const size\+\_\+t \&col)
+\item 
+void \hyperlink{classTable_a25434e9c7466b30fd5274ae1e2b90340}{set\+Width} (const size\+\_\+t \&, const size\+\_\+t \&col)
+\item 
+\hyperlink{classRow}{Row} \& \hyperlink{classTable_a87e55e477438afdaa491965aee7a8be2}{operator\mbox{[}$\,$\mbox{]}} (const size\+\_\+t \&row)
+\item 
+const \hyperlink{classRow}{Row} \hyperlink{classTable_a8bcbf5400584f857754e0bc0c97a63ec}{operator\mbox{[}$\,$\mbox{]}} (const size\+\_\+t \&row) const
+\item 
+void \hyperlink{classTable_aa6531f07b1b9b1690ba81e6c27d7b47e}{print} () const
+\item 
+void \hyperlink{classTable_a3ea36998494f2f1ea0e7d2d4add7b7d7}{make\+All\+Calculations} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTable_a5033ca5270ef016fef222fd3d01ca869}\label{classTable_a5033ca5270ef016fef222fd3d01ca869}} 
+\index{Table@{Table}!consider\+Width@{consider\+Width}}
+\index{consider\+Width@{consider\+Width}!Table@{Table}}
+\subsubsection{\texorpdfstring{consider\+Width()}{considerWidth()}}
+{\footnotesize\ttfamily void Table\+::consider\+Width (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{width,  }\item[{const size\+\_\+t \&}]{col }\end{DoxyParamCaption})}
+
+Sets a bigger field width for column if size is bigger than current max for column \mbox{\Hypertarget{classTable_a3ea36998494f2f1ea0e7d2d4add7b7d7}\label{classTable_a3ea36998494f2f1ea0e7d2d4add7b7d7}} 
+\index{Table@{Table}!make\+All\+Calculations@{make\+All\+Calculations}}
+\index{make\+All\+Calculations@{make\+All\+Calculations}!Table@{Table}}
+\subsubsection{\texorpdfstring{make\+All\+Calculations()}{makeAllCalculations()}}
+{\footnotesize\ttfamily void Table\+::make\+All\+Calculations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculates all cells that are not calculated yet (when everything is initialized) \mbox{\Hypertarget{classTable_a87e55e477438afdaa491965aee7a8be2}\label{classTable_a87e55e477438afdaa491965aee7a8be2}} 
+\index{Table@{Table}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Table@{Table}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classRow}{Row} \& Table\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{row }\end{DoxyParamCaption})}
+
+Returns modifiable reference to row and adds empty rows if out of range \mbox{\Hypertarget{classTable_a8bcbf5400584f857754e0bc0c97a63ec}\label{classTable_a8bcbf5400584f857754e0bc0c97a63ec}} 
+\index{Table@{Table}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Table@{Table}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \hyperlink{classRow}{Row} Table\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{row }\end{DoxyParamCaption}) const}
+
+Returns row with index row Returns empty row if out of range \mbox{\Hypertarget{classTable_aa6531f07b1b9b1690ba81e6c27d7b47e}\label{classTable_aa6531f07b1b9b1690ba81e6c27d7b47e}} 
+\index{Table@{Table}!print@{print}}
+\index{print@{print}!Table@{Table}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Table\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Print whole table \mbox{\Hypertarget{classTable_a25434e9c7466b30fd5274ae1e2b90340}\label{classTable_a25434e9c7466b30fd5274ae1e2b90340}} 
+\index{Table@{Table}!set\+Width@{set\+Width}}
+\index{set\+Width@{set\+Width}!Table@{Table}}
+\subsubsection{\texorpdfstring{set\+Width()}{setWidth()}}
+{\footnotesize\ttfamily void Table\+::set\+Width (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{width,  }\item[{const size\+\_\+t \&}]{col }\end{DoxyParamCaption})}
+
+Sets width to size 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/table/Table.\+h\item 
+Project-\/\+Tables/src/table/Table.\+cpp\end{DoxyCompactItemize}

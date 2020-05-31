@@ -1,0 +1,131 @@
+\hypertarget{classReferenceValue}{}\section{Reference\+Value Class Reference}
+\label{classReferenceValue}\index{Reference\+Value@{Reference\+Value}}
+
+
+{\ttfamily \#include $<$Reference\+Value.\+h$>$}
+
+
+
+Inheritance diagram for Reference\+Value\+:
+% FIG 0
+
+
+Collaboration diagram for Reference\+Value\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classReferenceValue_ae0a48f7dc231764b8a75946543fb8754}\label{classReferenceValue_ae0a48f7dc231764b8a75946543fb8754}} 
+{\bfseries Reference\+Value} (const std\+::string \&)
+\item 
+void \hyperlink{classReferenceValue_a24850974f891910d5f9298db29239e1e}{print} () const override
+\item 
+double \hyperlink{classReferenceValue_a1628a2c88bc97597b9f7e4f5b7a7a834}{get\+Double\+Value} () const override
+\item 
+void \hyperlink{classReferenceValue_a854b3c1368ad878010dd930307f9ccd2}{calculate\+Value} (\hyperlink{classTable}{Table} \&) override
+\item 
+void \hyperlink{classReferenceValue_a28ae7e6bd74fa18735456be37c866804}{set\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&, \hyperlink{classTable}{Table} \&) const override
+\item 
+void \hyperlink{classReferenceValue_a8cfd2b3e5f8d18b50ab523e7f9c8ad02}{remove\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&, \hyperlink{classTable}{Table} \&) const override
+\item 
+void \hyperlink{classReferenceValue_ad8d2f9ed510ea8d0c5076089dd52c998}{nullify} () override
+\item 
+size\+\_\+t \hyperlink{classReferenceValue_a5d4898e7695e098c1e6b26dfdcddbac2}{get\+Minimal\+Width} () const override
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ \hyperlink{classReferenceValue_ac8f0e1ec9b046692e551fc509e71d150}{parse\+From\+String} (const std\+::string \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dynamic cell containing reference to other cell 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classReferenceValue_a854b3c1368ad878010dd930307f9ccd2}\label{classReferenceValue_a854b3c1368ad878010dd930307f9ccd2}} 
+\index{Reference\+Value@{Reference\+Value}!calculate\+Value@{calculate\+Value}}
+\index{calculate\+Value@{calculate\+Value}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{calculate\+Value()}{calculateValue()}}
+{\footnotesize\ttfamily void Reference\+Value\+::calculate\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Calculates the value of the cell (if there is anything to calculate) 
+
+Implements \hyperlink{classCellValue_ab644256decf3608ed50e389ead6cf611}{Cell\+Value}.
+
+\mbox{\Hypertarget{classReferenceValue_a1628a2c88bc97597b9f7e4f5b7a7a834}\label{classReferenceValue_a1628a2c88bc97597b9f7e4f5b7a7a834}} 
+\index{Reference\+Value@{Reference\+Value}!get\+Double\+Value@{get\+Double\+Value}}
+\index{get\+Double\+Value@{get\+Double\+Value}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{get\+Double\+Value()}{getDoubleValue()}}
+{\footnotesize\ttfamily double Reference\+Value\+::get\+Double\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the value of the cell used for formulas
+
+Throws std\+::bad\+\_\+optional\+\_\+access (on dynamic cells) 
+
+Implements \hyperlink{classCellValue_a3d2850b3a8473050fd46f486a29ed5bf}{Cell\+Value}.
+
+\mbox{\Hypertarget{classReferenceValue_a5d4898e7695e098c1e6b26dfdcddbac2}\label{classReferenceValue_a5d4898e7695e098c1e6b26dfdcddbac2}} 
+\index{Reference\+Value@{Reference\+Value}!get\+Minimal\+Width@{get\+Minimal\+Width}}
+\index{get\+Minimal\+Width@{get\+Minimal\+Width}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{get\+Minimal\+Width()}{getMinimalWidth()}}
+{\footnotesize\ttfamily size\+\_\+t Reference\+Value\+::get\+Minimal\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the minimal width of the cell 
+
+Implements \hyperlink{classCellValue_ad96473ba3dd88b83da96c03ae31a2ede}{Cell\+Value}.
+
+\mbox{\Hypertarget{classReferenceValue_ad8d2f9ed510ea8d0c5076089dd52c998}\label{classReferenceValue_ad8d2f9ed510ea8d0c5076089dd52c998}} 
+\index{Reference\+Value@{Reference\+Value}!nullify@{nullify}}
+\index{nullify@{nullify}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{nullify()}{nullify()}}
+{\footnotesize\ttfamily void Reference\+Value\+::nullify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Resets the value without changing the syntax (if contains reference) 
+
+Implements \hyperlink{classCellValue_af4f30a4b36e159f2f2bfc7ed83f1b37a}{Cell\+Value}.
+
+\mbox{\Hypertarget{classReferenceValue_ac8f0e1ec9b046692e551fc509e71d150}\label{classReferenceValue_ac8f0e1ec9b046692e551fc509e71d150}} 
+\index{Reference\+Value@{Reference\+Value}!parse\+From\+String@{parse\+From\+String}}
+\index{parse\+From\+String@{parse\+From\+String}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{parse\+From\+String()}{parseFromString()}}
+{\footnotesize\ttfamily std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ Reference\+Value\+::parse\+From\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Parses string to pair of row and column
+
+Throws \hyperlink{structInvalidReference}{Invalid\+Reference} \mbox{\Hypertarget{classReferenceValue_a24850974f891910d5f9298db29239e1e}\label{classReferenceValue_a24850974f891910d5f9298db29239e1e}} 
+\index{Reference\+Value@{Reference\+Value}!print@{print}}
+\index{print@{print}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Reference\+Value\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Prints the value of the cell 
+
+Implements \hyperlink{classCellValue_a12d1cf68a5ba83f0c375441729772742}{Cell\+Value}.
+
+\mbox{\Hypertarget{classReferenceValue_a8cfd2b3e5f8d18b50ab523e7f9c8ad02}\label{classReferenceValue_a8cfd2b3e5f8d18b50ab523e7f9c8ad02}} 
+\index{Reference\+Value@{Reference\+Value}!remove\+Dependant\+Cell@{remove\+Dependant\+Cell}}
+\index{remove\+Dependant\+Cell@{remove\+Dependant\+Cell}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{remove\+Dependant\+Cell()}{removeDependantCell()}}
+{\footnotesize\ttfamily void Reference\+Value\+::remove\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{,  }\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Removes dependant cell to the cell value (if contains reference) 
+
+Implements \hyperlink{classCellValue_a72b4390db6c53e525550cefade66fb0e}{Cell\+Value}.
+
+\mbox{\Hypertarget{classReferenceValue_a28ae7e6bd74fa18735456be37c866804}\label{classReferenceValue_a28ae7e6bd74fa18735456be37c866804}} 
+\index{Reference\+Value@{Reference\+Value}!set\+Dependant\+Cell@{set\+Dependant\+Cell}}
+\index{set\+Dependant\+Cell@{set\+Dependant\+Cell}!Reference\+Value@{Reference\+Value}}
+\subsubsection{\texorpdfstring{set\+Dependant\+Cell()}{setDependantCell()}}
+{\footnotesize\ttfamily void Reference\+Value\+::set\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{,  }\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Sets a dependant cell to the cell value (if contains a reference to another cell) 
+
+Implements \hyperlink{classCellValue_ad2437fb3d4d4a96d9a76c857b3d04231}{Cell\+Value}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/cells/Reference\+Value.\+h\item 
+Project-\/\+Tables/src/cells/Reference\+Value.\+cpp\end{DoxyCompactItemize}

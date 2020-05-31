@@ -3,8 +3,8 @@
 #include "../table/Table.h"
 #include <optional>
 
-/*
-    Controller class for interractions with table
+/**
+ * Controller class for interractions with table
 */
 class TableController
 {
@@ -21,13 +21,14 @@ public:
 
     void printTable() const;
 
-    /*
-        Sets cell at coordinates to newValue and 
-        updates it and all dependant cells
+    /**
+     * Sets cell at coordinates to newValue and 
+     * updates it and all dependant cells
     */
     void editCell(const size_t &row, const size_t &col,
                   const std::string &newValue);
+
 private:
-    void updateColumns(const std::vector<size_t>& columns);
+    void updateColumns(const std::vector<size_t> &columns);
 };
 #endif

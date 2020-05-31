@@ -1,0 +1,61 @@
+\hypertarget{classFileController}{}\section{File\+Controller Class Reference}
+\label{classFileController}\index{File\+Controller@{File\+Controller}}
+
+
+{\ttfamily \#include $<$File\+Controller.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classFileController_a3e559be5fba16c52aba8e82eea63c654}{open} (const std\+::string \&filename, \hyperlink{classTable}{Table} \&)
+\item 
+void \hyperlink{classFileController_a769aa819f60cc6f1557868008b781c3c}{close} ()
+\item 
+void \hyperlink{classFileController_a9ed5c3b640ad19438a660e1c7a201695}{save} (const \hyperlink{classTable}{Table} \&) const
+\item 
+void \hyperlink{classFileController_af258e978bb75dd280187a7ee3b2c64ae}{saveas} (const std\+::string \&new\+File\+Name, const \hyperlink{classTable}{Table} \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller class for interraction with files 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFileController_a769aa819f60cc6f1557868008b781c3c}\label{classFileController_a769aa819f60cc6f1557868008b781c3c}} 
+\index{File\+Controller@{File\+Controller}!close@{close}}
+\index{close@{close}!File\+Controller@{File\+Controller}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void File\+Controller\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Closes file
+
+Throws \hyperlink{structNoSource}{No\+Source} \mbox{\Hypertarget{classFileController_a3e559be5fba16c52aba8e82eea63c654}\label{classFileController_a3e559be5fba16c52aba8e82eea63c654}} 
+\index{File\+Controller@{File\+Controller}!open@{open}}
+\index{open@{open}!File\+Controller@{File\+Controller}}
+\subsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily void File\+Controller\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\hyperlink{classTable}{Table} \&}]{table }\end{DoxyParamCaption})}
+
+Opens file and deserializes table form it
+
+Throws \hyperlink{structSourceAlreadyExists}{Source\+Already\+Exists} \mbox{\Hypertarget{classFileController_a9ed5c3b640ad19438a660e1c7a201695}\label{classFileController_a9ed5c3b640ad19438a660e1c7a201695}} 
+\index{File\+Controller@{File\+Controller}!save@{save}}
+\index{save@{save}!File\+Controller@{File\+Controller}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void File\+Controller\+::save (\begin{DoxyParamCaption}\item[{const \hyperlink{classTable}{Table} \&}]{table }\end{DoxyParamCaption}) const}
+
+Saves table to current open file
+
+Throws \hyperlink{structNoSource}{No\+Source} \mbox{\Hypertarget{classFileController_af258e978bb75dd280187a7ee3b2c64ae}\label{classFileController_af258e978bb75dd280187a7ee3b2c64ae}} 
+\index{File\+Controller@{File\+Controller}!saveas@{saveas}}
+\index{saveas@{saveas}!File\+Controller@{File\+Controller}}
+\subsubsection{\texorpdfstring{saveas()}{saveas()}}
+{\footnotesize\ttfamily void File\+Controller\+::saveas (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+File\+Name,  }\item[{const \hyperlink{classTable}{Table} \&}]{table }\end{DoxyParamCaption})}
+
+Opens new file(new\+File\+Name) and serializes table
+
+Throws \hyperlink{structNoSource}{No\+Source} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/file-\/controller/File\+Controller.\+h\item 
+Project-\/\+Tables/src/file-\/controller/File\+Controller.\+cpp\end{DoxyCompactItemize}

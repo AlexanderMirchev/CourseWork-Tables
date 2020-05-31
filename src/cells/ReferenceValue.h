@@ -5,6 +5,9 @@
 #include <optional>
 #include <utility>
 
+/**
+ * Dynamic cell containing reference to other cell
+*/
 class ReferenceValue : public CellValue
 {
 private:
@@ -25,6 +28,11 @@ public:
     void nullify() override;
     size_t getMinimalWidth() const override;
 
+    /**
+     * Parses string to pair of row and column
+     * 
+     * Throws InvalidReference
+    */
     static std::pair<size_t, size_t> parseFromString(const std::string &);
 };
 #endif

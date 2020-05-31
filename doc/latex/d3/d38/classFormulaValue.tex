@@ -1,0 +1,118 @@
+\hypertarget{classFormulaValue}{}\section{Formula\+Value Class Reference}
+\label{classFormulaValue}\index{Formula\+Value@{Formula\+Value}}
+
+
+{\ttfamily \#include $<$Formula\+Value.\+h$>$}
+
+
+
+Inheritance diagram for Formula\+Value\+:
+% FIG 0
+
+
+Collaboration diagram for Formula\+Value\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFormulaValue_a4f7441fe3525e963ca8b13c7c7209a06}\label{classFormulaValue_a4f7441fe3525e963ca8b13c7c7209a06}} 
+{\bfseries Formula\+Value} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ \&first\+Part, const std\+::shared\+\_\+ptr$<$ \hyperlink{classCellValue}{Cell\+Value} $>$ \&second\+Part, const char \&operation)
+\item 
+void \hyperlink{classFormulaValue_a62217eb27ea02ca26f7636afb8f75b73}{print} () const override
+\item 
+double \hyperlink{classFormulaValue_a164f0c3e517db2fb4423e27e54ca4a60}{get\+Double\+Value} () const override
+\item 
+void \hyperlink{classFormulaValue_a8b8462588f3d533f6a5a39adee4f3eba}{calculate\+Value} (\hyperlink{classTable}{Table} \&) override
+\item 
+void \hyperlink{classFormulaValue_a0532fb20f1ea829fd8ec7fa32c96105a}{set\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&, \hyperlink{classTable}{Table} \&) const override
+\item 
+void \hyperlink{classFormulaValue_a7081172a6793644e3375c81f76ed1ba8}{remove\+Dependant\+Cell} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&, \hyperlink{classTable}{Table} \&) const override
+\item 
+void \hyperlink{classFormulaValue_a43f76e805f909e32823cf44d4d1c6cb8}{nullify} () override
+\item 
+size\+\_\+t \hyperlink{classFormulaValue_a13abe74f12b5b201620d09e50237b195}{get\+Minimal\+Width} () const override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dynamic cell containing formula 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFormulaValue_a8b8462588f3d533f6a5a39adee4f3eba}\label{classFormulaValue_a8b8462588f3d533f6a5a39adee4f3eba}} 
+\index{Formula\+Value@{Formula\+Value}!calculate\+Value@{calculate\+Value}}
+\index{calculate\+Value@{calculate\+Value}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{calculate\+Value()}{calculateValue()}}
+{\footnotesize\ttfamily void Formula\+Value\+::calculate\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Calculates the value of the cell (if there is anything to calculate) 
+
+Implements \hyperlink{classCellValue_ab644256decf3608ed50e389ead6cf611}{Cell\+Value}.
+
+\mbox{\Hypertarget{classFormulaValue_a164f0c3e517db2fb4423e27e54ca4a60}\label{classFormulaValue_a164f0c3e517db2fb4423e27e54ca4a60}} 
+\index{Formula\+Value@{Formula\+Value}!get\+Double\+Value@{get\+Double\+Value}}
+\index{get\+Double\+Value@{get\+Double\+Value}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{get\+Double\+Value()}{getDoubleValue()}}
+{\footnotesize\ttfamily double Formula\+Value\+::get\+Double\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the value of the cell used for formulas
+
+Throws std\+::bad\+\_\+optional\+\_\+access (on dynamic cells) 
+
+Implements \hyperlink{classCellValue_a3d2850b3a8473050fd46f486a29ed5bf}{Cell\+Value}.
+
+\mbox{\Hypertarget{classFormulaValue_a13abe74f12b5b201620d09e50237b195}\label{classFormulaValue_a13abe74f12b5b201620d09e50237b195}} 
+\index{Formula\+Value@{Formula\+Value}!get\+Minimal\+Width@{get\+Minimal\+Width}}
+\index{get\+Minimal\+Width@{get\+Minimal\+Width}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{get\+Minimal\+Width()}{getMinimalWidth()}}
+{\footnotesize\ttfamily size\+\_\+t Formula\+Value\+::get\+Minimal\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Returns the minimal width of the cell 
+
+Implements \hyperlink{classCellValue_ad96473ba3dd88b83da96c03ae31a2ede}{Cell\+Value}.
+
+\mbox{\Hypertarget{classFormulaValue_a43f76e805f909e32823cf44d4d1c6cb8}\label{classFormulaValue_a43f76e805f909e32823cf44d4d1c6cb8}} 
+\index{Formula\+Value@{Formula\+Value}!nullify@{nullify}}
+\index{nullify@{nullify}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{nullify()}{nullify()}}
+{\footnotesize\ttfamily void Formula\+Value\+::nullify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Resets the value without changing the syntax (if contains reference) 
+
+Implements \hyperlink{classCellValue_af4f30a4b36e159f2f2bfc7ed83f1b37a}{Cell\+Value}.
+
+\mbox{\Hypertarget{classFormulaValue_a62217eb27ea02ca26f7636afb8f75b73}\label{classFormulaValue_a62217eb27ea02ca26f7636afb8f75b73}} 
+\index{Formula\+Value@{Formula\+Value}!print@{print}}
+\index{print@{print}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Formula\+Value\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Prints the value of the cell 
+
+Implements \hyperlink{classCellValue_a12d1cf68a5ba83f0c375441729772742}{Cell\+Value}.
+
+\mbox{\Hypertarget{classFormulaValue_a7081172a6793644e3375c81f76ed1ba8}\label{classFormulaValue_a7081172a6793644e3375c81f76ed1ba8}} 
+\index{Formula\+Value@{Formula\+Value}!remove\+Dependant\+Cell@{remove\+Dependant\+Cell}}
+\index{remove\+Dependant\+Cell@{remove\+Dependant\+Cell}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{remove\+Dependant\+Cell()}{removeDependantCell()}}
+{\footnotesize\ttfamily void Formula\+Value\+::remove\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{,  }\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Removes dependant cell to the cell value (if contains reference) 
+
+Implements \hyperlink{classCellValue_a72b4390db6c53e525550cefade66fb0e}{Cell\+Value}.
+
+\mbox{\Hypertarget{classFormulaValue_a0532fb20f1ea829fd8ec7fa32c96105a}\label{classFormulaValue_a0532fb20f1ea829fd8ec7fa32c96105a}} 
+\index{Formula\+Value@{Formula\+Value}!set\+Dependant\+Cell@{set\+Dependant\+Cell}}
+\index{set\+Dependant\+Cell@{set\+Dependant\+Cell}!Formula\+Value@{Formula\+Value}}
+\subsubsection{\texorpdfstring{set\+Dependant\+Cell()}{setDependantCell()}}
+{\footnotesize\ttfamily void Formula\+Value\+::set\+Dependant\+Cell (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classCell}{Cell} $>$ \&}]{,  }\item[{\hyperlink{classTable}{Table} \&}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Sets a dependant cell to the cell value (if contains a reference to another cell) 
+
+Implements \hyperlink{classCellValue_ad2437fb3d4d4a96d9a76c857b3d04231}{Cell\+Value}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/cells/Formula\+Value.\+h\item 
+Project-\/\+Tables/src/cells/Formula\+Value.\+cpp\end{DoxyCompactItemize}

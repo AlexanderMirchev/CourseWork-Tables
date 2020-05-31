@@ -1,0 +1,27 @@
+\hypertarget{classCannotCreateTable}{}\section{Cannot\+Create\+Table Class Reference}
+\label{classCannotCreateTable}\index{Cannot\+Create\+Table@{Cannot\+Create\+Table}}
+
+
+Inheritance diagram for Cannot\+Create\+Table\+:
+% FIG 0
+
+
+Collaboration diagram for Cannot\+Create\+Table\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCannotCreateTable_a65dce37a8d511c4ca2207e1d9ef06820}\label{classCannotCreateTable_a65dce37a8d511c4ca2207e1d9ef06820}} 
+{\bfseries Cannot\+Create\+Table} (const char $\ast$file, const \hyperlink{classUnknownDataType}{Unknown\+Data\+Type} \&e)
+\item 
+\mbox{\Hypertarget{classCannotCreateTable_aa80f2cdced934452f3a1f7a0b21cdcd1}\label{classCannotCreateTable_aa80f2cdced934452f3a1f7a0b21cdcd1}} 
+const char $\ast$ {\bfseries what} () const noexcept override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Exception for when an error has occured while creating table 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Project-\/\+Tables/src/exceptions/Exceptions.\+cpp\end{DoxyCompactItemize}

@@ -4,13 +4,12 @@
 #include "CellValue.h"
 #include <optional>
 
+/**
+ * Dynamic cell containing formula
+*/
 class FormulaValue : public CellValue
 {
 private:
-    // double value;
-    // std::vector<std::shared_ptr<Cell>> cellContents;
-    // std::vector<char> operations;
-
     std::optional<double> value;
     std::shared_ptr<CellValue> firstPart;
     std::shared_ptr<CellValue> secondPart;

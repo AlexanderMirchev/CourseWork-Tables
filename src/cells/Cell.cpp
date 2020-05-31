@@ -1,5 +1,6 @@
 #include "Cell.h"
 #include "../utilities/Utility.h"
+#include "../exceptions/Exceptions.cpp"
 #include <iostream>
 
 Cell::Cell(const std::string &str, const std::shared_ptr<CellValue> &value,
@@ -76,7 +77,7 @@ void Cell::updateCell(Table &table,
             {
                 cell->updateCell(table, startCell, updatedColumns);
             }
-            catch (const std::exception &e)
+            catch (const CreatedCircularDependency &e)
             {
                 hasCircularDependency = true;
                 this->value->nullify();
@@ -90,7 +91,7 @@ void Cell::updateCell(Table &table,
     }
     if (hasCircularDependency)
     {
-        throw std::exception();
+        throw CreatedCircularDependency();
     }
 }
 
